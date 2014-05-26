@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @technic.user %>
+</p>
+
+<p>
+  <strong>Level:</strong>
+  <%= @technic.level %>
+</p>
+
+<%= link_to 'Edit', edit_technic_path(@technic) %> |
+<%= link_to 'Back', technics_path %>

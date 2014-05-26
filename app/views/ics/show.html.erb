@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @ic.name %>
+</p>
+
+<p>
+  <strong>Number:</strong>
+  <%= @ic.number %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @ic.description %>
+</p>
+
+<%= link_to 'Edit', edit_ic_path(@ic) %> |
+<%= link_to 'Back', ics_path %>
