@@ -31,6 +31,10 @@
     <%= f.label :time_worked %><br>
     <%= f.number_field :time_worked %>
   </div>
+    <div class="field">
+      <%= f.label :service_ids %><br>
+      <%= f.collection_check_boxes(:service_ids,Service.all,:id,:name) %>
+    </div>
   <div class="actions">
     <%= f.submit %>
   </div>

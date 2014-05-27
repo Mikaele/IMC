@@ -1,4 +1,4 @@
 class Service < ActiveRecord::Base
-  belongs_to :call
-  belongs_to :ic
+  has_and_belongs_to_many :ics
+  has_and_belongs_to_many :calls
 end

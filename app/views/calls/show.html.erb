@@ -24,6 +24,7 @@
   <strong>Time worked:</strong>
   <%= @call.time_worked %>
 </p>
+<%= debug @call.services%>
 
 <%= link_to 'Edit', edit_call_path(@call) %> |
 <%= link_to 'Back', calls_path %>

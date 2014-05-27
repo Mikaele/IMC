@@ -28,12 +28,8 @@
     <%= f.text_field :description %>
   </div>
   <div class="field">
-    <%= f.label :call_id %><br>
-    <%= f.text_field :call_id %>
-  </div>
-  <div class="field">
-    <%= f.label :ic_id %><br>
-    <%= f.text_field :ic_id %>
+    <%= f.label :ic_ids %><br>
+    <%= f.collection_check_boxes( :ic_ids,Ic.all,:id,:name) %>
   </div>
   <div class="actions">
     <%= f.submit %>
