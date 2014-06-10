@@ -13,25 +13,25 @@
 
   <div class="field">
     <%= f.label :name %><br>
-    <%= f.text_field :name %>
+    <%= f.text_field :name,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :number %><br>
-    <%= f.number_field :number %>
+    <%= f.number_field :number,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :category %><br>
-    <%= f.text_field :category %>
+    <%= f.text_field :category,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :ic_ids %><br>
-    <%= f.collection_check_boxes( :ic_ids,Ic.all,:id,:name) %>
+    <%= f.collection_check_boxes( :ic_ids,Ic.all,:id,:name,:class=>"form-control") %>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Enviar", :class=>"btn btn-primary"%>
   </div>
 <% end %>
