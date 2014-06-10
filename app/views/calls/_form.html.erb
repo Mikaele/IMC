@@ -13,29 +13,29 @@
 
   <div class="field">
     <%= f.label :technic_id %><br>
-    <%= f.text_field :technic_id %>
+    <%= f.text_field :technic_id,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :client_id %><br>
-    <%= f.text_field :client_id %>
+    <%= f.text_field :client_id,:class=>"form-control" %>
   </div>
   <div class="field">
-    <%= f.label :number %><br>
-    <%= f.number_field :number %>
+    <%= f.label :number %><br>    ,
+    <%= f.number_field :number,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :state %><br>
-    <%= f.text_field :state %>
+    <%= f.text_field :state ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :time_worked %><br>
-    <%= f.number_field :time_worked %>
+    <%= f.number_field :time_worked ,:class=>"form-control"%>
   </div>
     <div class="field">
       <%= f.label :service_ids %><br>
-      <%= f.collection_check_boxes(:service_ids,Service.all,:id,:name) %>
+      <%= f.collection_check_boxes(:service_ids,Service.all,:id,:name,:class=>"form-control") %>
     </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit  "Cadastrar",:class=>"btn btn-primary"%>
   </div>
 <% end %>
