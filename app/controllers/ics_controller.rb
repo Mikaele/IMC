@@ -1,5 +1,6 @@
 class IcsController < ApplicationController
   before_action :set_ic, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   # GET /ics
   # GET /ics.json

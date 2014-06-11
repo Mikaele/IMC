@@ -24,6 +24,9 @@
         <li><a href="/ics">Itens de Configuração</a></li>
         <li><a href="/calls">Chamados</a></li>
         <li><a href="#">Help</a></li>
+        <% if current_user %>
+        <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+        <%end%>
       </ul>
       <form class="navbar-form navbar-right">
         <input type="text" placeholder="Search..." class="form-control">
