@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @perfil.nome %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @perfil.descricao %>
+</p>
+
+<%= link_to 'Edit', edit_perfil_path(@perfil) %> |
+<%= link_to 'Back', perfils_path %>

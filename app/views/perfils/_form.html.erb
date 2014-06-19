@@ -1,0 +1,25 @@
+<%= form_for(@perfil) do |f| %>
+  <% if @perfil.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@perfil.errors.count, "error") %> prohibited this perfil from being saved:</h2>
+
+      <ul>
+      <% @perfil.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :nome %><br>
+    <%= f.text_field :nome,:class=>"form-control" %>
+  </div>
+  <div class="field">
+    <%= f.label :descricao %><br>
+    <%= f.text_field :descricao ,:class=>"form-control"%>
+  </div>
+  <div class="actions">
+    <%= f.submit :class=>"btn btn-primary" %>
+  </div>
+<% end %>
