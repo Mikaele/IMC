@@ -1,1 +1,1 @@
-json.extract! @call, :id, :technic_id, :client_id, :number, :state, :time_worked, :created_at, :updated_at
+json.extract! @call, :id, :description, :service_id, :files, :client_id, :h_trabalhadas, :colaborador_id, :estado, :created_at, :updated_at

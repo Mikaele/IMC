@@ -1,8 +1,18 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Technic:</strong>
-  <%= @call.technic %>
+  <strong>Description:</strong>
+  <%= @call.description %>
+</p>
+
+<p>
+  <strong>Service:</strong>
+  <%= @call.service %>
+</p>
+
+<p>
+  <strong>Files:</strong>
+  <%= @call.files %>
 </p>
 
 <p>
@@ -11,47 +21,19 @@
 </p>
 
 <p>
-  <strong>Number:</strong>
-  <%= @call.number %>
+  <strong>H trabalhadas:</strong>
+  <%= @call.h_trabalhadas %>
 </p>
 
 <p>
-  <strong>State:</strong>
-  <%= @call.state %>
+  <strong>Colaborador:</strong>
+  <%= @call.colaborador %>
 </p>
 
 <p>
-  <strong>Time worked:</strong>
-  <%= @call.time_worked %>
+  <strong>Estado:</strong>
+  <%= @call.estado %>
 </p>
-<div class="col-md-12 bg-primary">
-  <div class="col-md-2">
-    Serviço
-  </div>
-  <div class="col-lg-10">
-    Ic's
-  </div>
-</div>
-<div class="col-md-12 ">
-  <div class="col-md-2"></div>
-  <div class="col-md-10 bg-primary">
-    <div class="col-md-5">Nome</div>
-    <div class="col-md-5">NUmero</div>
-  </div>
-</div>
-<% @call.services.each do |c|%>
-    <div class="col-md-12 bg-success">
-      <hr>
-      <div class="col-md-2"><%= c.name %></div>
-  <% c.ics.each do |i|%>
-  <div class="col-md-2"></div>
-  <div class="col-md-10">
-    <div class="col-md-5"><%= i.name %></div>
-    <div class="col-md-5"><%= i.number %></div>
-  </div>
-  <% end %>
-</div>
-<%end%>
 
 <%= link_to 'Edit', edit_call_path(@call) %> |
 <%= link_to 'Back', calls_path %>

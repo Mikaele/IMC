@@ -12,30 +12,34 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :technic_id %><br>
-    <%= f.text_field :technic_id,:class=>"form-control" %>
+    <%= f.label :description %><br>
+    <%= f.text_field :description %>
+  </div>
+  <div class="field">
+    <%= f.label :service_id %><br>
+    <%= f.text_field :service_id %>
+  </div>
+  <div class="field">
+    <%= f.label :files %><br>
+    <%= f.text_field :files %>
   </div>
   <div class="field">
     <%= f.label :client_id %><br>
-    <%= f.text_field :client_id,:class=>"form-control" %>
+    <%= f.text_field :client_id %>
   </div>
   <div class="field">
-    <%= f.label :number %><br>    ,
-    <%= f.number_field :number,:class=>"form-control" %>
+    <%= f.label :h_trabalhadas %><br>
+    <%= f.datetime_select :h_trabalhadas %>
   </div>
   <div class="field">
-    <%= f.label :state %><br>
-    <%= f.text_field :state ,:class=>"form-control"%>
+    <%= f.label :colaborador_id %><br>
+    <%= f.text_field :colaborador_id %>
   </div>
   <div class="field">
-    <%= f.label :time_worked %><br>
-    <%= f.number_field :time_worked ,:class=>"form-control"%>
+    <%= f.label :estado %><br>
+    <%= f.text_field :estado %>
   </div>
-    <div class="field">
-      <%= f.label :service_ids %><br>
-      <%= f.collection_check_boxes(:service_ids,Service.all,:id,:name,:class=>"form-control") %>
-    </div>
   <div class="actions">
-    <%= f.submit  "Cadastrar",:class=>"btn btn-primary"%>
+    <%= f.submit %>
   </div>
 <% end %>

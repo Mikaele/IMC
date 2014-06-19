@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
+  resources :calls
+
+  resources :colaboradors
+
   resources :ics
 
   resources :services
 
-  resources :calls
-
   resources :clients
-
-  resources :technics
 
   devise_for :users
 

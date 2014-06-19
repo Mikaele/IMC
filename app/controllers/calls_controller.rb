@@ -1,6 +1,4 @@
 class CallsController < ApplicationController
-  before_filter :authenticate_user!
-  load_and_authorize_resource
   before_action :set_call, only: [:show, :edit, :update, :destroy]
 
   # GET /calls
@@ -71,6 +69,6 @@ class CallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def call_params
-      params.require(:call).permit(:technic_id, :client_id, :number, :state, :time_worked,:service_ids=> [])
+      params.require(:call).permit(:description, :service_id, :files, :client_id, :h_trabalhadas, :colaborador_id, :estado)
     end
 end
