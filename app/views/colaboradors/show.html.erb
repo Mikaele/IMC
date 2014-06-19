@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>User:</strong>
+  <%= @colaborador.user %>
+</p>
+
+<p>
+  <strong>Cpf:</strong>
+  <%= @colaborador.cpf %>
+</p>
+
+<p>
+  <strong>Telefone:</strong>
+  <%= @colaborador.telefone %>
+</p>
+
+<p>
+  <strong>Endereco:</strong>
+  <%= @colaborador.endereco %>
+</p>
+
+<%= link_to 'Edit', edit_colaborador_path(@colaborador) %> |
+<%= link_to 'Back', colaboradors_path %>

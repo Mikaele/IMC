@@ -1,0 +1,33 @@
+<%= form_for(@colaborador) do |f| %>
+  <% if @colaborador.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@colaborador.errors.count, "error") %> prohibited this colaborador from being saved:</h2>
+
+      <ul>
+      <% @colaborador.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.text_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.label :cpf %><br>
+    <%= f.number_field :cpf %>
+  </div>
+  <div class="field">
+    <%= f.label :telefone %><br>
+    <%= f.text_field :telefone %>
+  </div>
+  <div class="field">
+    <%= f.label :endereco %><br>
+    <%= f.text_field :endereco %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
