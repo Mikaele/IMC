@@ -13,33 +13,33 @@
 
   <div class="field">
     <%= f.label :description %><br>
-    <%= f.text_field :description %>
+    <%= f.text_field :description ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :service_id %><br>
-    <%= f.text_field :service_id %>
+    <%= f.text_field :service_id ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :files %><br>
-    <%= f.text_field :files %>
+    <%= f.text_field :files,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :client_id %><br>
-    <%= f.text_field :client_id %>
+    <%= f.text_field :client_id ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :h_trabalhadas %><br>
-    <%= f.datetime_select :h_trabalhadas %>
+    <%= f.datetime_select :h_trabalhadas,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :colaborador_id %><br>
-    <%= f.text_field :colaborador_id %>
+    <%= f.text_field :colaborador_id ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :estado %><br>
-    <%= f.text_field :estado %>
+    <%= f.text_field :estado ,:class=>"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit 'Enviar', :class=>"btn btn-primary"%>
   </div>
 <% end %>

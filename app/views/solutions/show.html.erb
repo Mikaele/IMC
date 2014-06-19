@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Call:</strong>
+  <%= @solution.call %>
+</p>
+
+<p>
+  <strong>Comentario:</strong>
+  <%= @solution.comentario %>
+</p>
+
+<p>
+  <strong>Anexo:</strong>
+  <%= @solution.anexo %>
+</p>
+
+<p>
+  <strong>Colaborador:</strong>
+  <%= @solution.colaborador %>
+</p>
+
+<%= link_to 'Edit', edit_solution_path(@solution) %> |
+<%= link_to 'Back', solutions_path %>

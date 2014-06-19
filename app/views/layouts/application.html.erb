@@ -10,16 +10,16 @@
 <div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a href="#" class="navbar-brand">Project name</a>
+      <a href="#" class="navbar-brand">IMC</a>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Serviços <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/services/new">Novo</a></li>
+            <li><a href="/services/new"><i class="fa-file-text"></i>Novo</a></li>
             <li class="divider"></li>
-            <li><a href="/services">Listar Serviços</a></li>
+            <li><a href="/services"><i class="fa-list-alt"></i>Listar Serviços</a></li>
           </ul>
         </li>
         <li class="dropdown">
@@ -35,10 +35,45 @@
           <ul class="dropdown-menu">
             <li><a href="/calls/new">Novo</a></li>
             <li class="divider"></li>
-            <li><a href="/calls">Listar IC</a></li>
+            <li><a href="/calls">Listar Chamados</a></li>
           </ul>
         </li>
-        <li><a href="#">Help</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Solução <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/solutions/new">Nova</a></li>
+            <li class="divider"></li>
+            <li><a href="/solutions">Listar Solução</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Novo</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Listar Perfis</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Horas dos Chamados</a></li>
+            <li><a href="#">Horas do Colaborador</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Serviços Frequentes</a></li>
+            <li class="divider"></li>
+            <li><a href="#">Chamados por status</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Incidentes <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li><a href="/incidentes/new">Novo</a></li>
+            <li class="divider"></li>
+            <li><a href="/incidentes">Listar</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Ajuda</a></li>
         <% if current_user %>
         <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
         <%end%>

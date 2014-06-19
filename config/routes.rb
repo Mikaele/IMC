@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :solutions
+
+  resources :incidentes
+
   resources :calls
 
   resources :colaboradors
