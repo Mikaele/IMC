@@ -13,21 +13,21 @@
 
   <div class="field">
     <%= f.label :call_id %><br>
-    <%= f.text_field :call_id %>
+    <%= f.text_field :call_id,:class=>"form-control" %>
   </div>
   <div class="field">
     <%= f.label :comentario %><br>
-    <%= f.text_field :comentario %>
+    <%= f.text_field :comentario ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :anexo %><br>
-    <%= f.text_field :anexo %>
+    <%= f.text_field :anexo ,:class=>"form-control"%>
   </div>
   <div class="field">
     <%= f.label :colaborador_id %><br>
-    <%= f.text_field :colaborador_id %>
+    <%= f.text_field :colaborador_id ,:class=>"form-control"%>
   </div>
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit :class=>'btn btn-primary'%>
   </div>
 <% end %>
