@@ -7,7 +7,9 @@
 
 <p>
   <strong>Service:</strong>
-  <%= @call.service %>
+  <% @call.services do |s| %>
+    <%= s%>
+  <%end%>
 </p>
 
 <p>
@@ -37,3 +39,6 @@
 
 <%= link_to 'Edit', edit_call_path(@call) %> |
 <%= link_to 'Back', calls_path %>
+
+
+<%= debug @call.services %>

@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :service_id %><br>
-    <%= f.text_field :service_id ,:class=>"form-control"%>
+    <%= f.collection_check_boxes( :service_ids,Service.all,:id,:name,:class=>"form-control") %>
   </div>
   <div class="field">
     <%= f.label :files %><br>
