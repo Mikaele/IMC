@@ -11,6 +11,7 @@ class IcsController < ApplicationController
   # GET /ics/1
   # GET /ics/1.json
   def show
+    @ic=Ic.find_by(:id=>params[:id])
   end
 
   # GET /ics/new

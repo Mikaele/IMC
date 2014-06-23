@@ -24,9 +24,9 @@
         <td><%= call.h_trabalhadas %></td>
         <td><%= call.colaborador %></td>
         <td><%= call.estado %></td>
-        <td><%= link_to 'Show', call %></td>
-        <td><%= link_to 'Edit', edit_call_path(call) %></td>
-        <td><%= link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', call ,:class=>'btn btn-info'%></td>
+        <td><%= link_to 'Edit', edit_call_path(call) ,:class=>'btn btn-primary'%></td>
+        <td><%= link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>

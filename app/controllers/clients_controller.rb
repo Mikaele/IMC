@@ -10,6 +10,7 @@ class ClientsController < ApplicationController
   # GET /clients/1
   # GET /clients/1.json
   def show
+    @@client=Client.find_by(:id=>params[:id])
   end
 
   # GET /clients/new

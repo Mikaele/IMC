@@ -10,6 +10,7 @@ class CallsController < ApplicationController
   # GET /calls/1
   # GET /calls/1.json
   def show
+    @call=Call.find_by(:id=>params[:id])
   end
 
   # GET /calls/new
