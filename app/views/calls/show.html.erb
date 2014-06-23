@@ -4,14 +4,6 @@
   <strong>Description:</strong>
   <%= @call.description %>
 </p>
-
-<p>
-  <strong>Service:</strong>
-  <% @call.services do |s| %>
-    <%= s%>
-  <%end%>
-</p>
-
 <p>
   <strong>Files:</strong>
   <%= @call.files %>
@@ -36,9 +28,25 @@
   <strong>Estado:</strong>
   <%= @call.estado %>
 </p>
+<p>
+  <strong>Services</strong>
+  <table class="table">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+    </tr>
+    <% @call.services.each do |s| %>
+  <tr>
+    <td><%= s.id%></td>
+    <td><%= s.name%></td>
+    </tr>
+    <%end%>
+  </table>
+
+
+</p>
+
+
 
 <%= link_to 'Edit', edit_call_path(@call) %> |
 <%= link_to 'Back', calls_path %>
-
-
-<%= debug @call.services %>

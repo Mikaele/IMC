@@ -22,17 +22,21 @@
 
 <p>
   <strong>Ic:</strong>
-  <%= debug @service.ics%>
 </p>
-<table>
-  <th>
+<table class="table">
+  <tr></tr>
+  <th>Nome</th>
+  <th>Numero</th>
 
-  </th>
-  <tr>
-    <td>Nome</td>
-    <td>Numero</td>
-  </tr>
+    <% @service.ics.each do |s|%>
+      <tr>
+    <td><%= s.number %></td>
+    <td><%= s.name %></td>
+      </tr>
+    <%  end%>
+
 </table>
 
 <%= link_to 'Edit', edit_service_path(@service) %> |
 <%= link_to 'Back', services_path %>
+

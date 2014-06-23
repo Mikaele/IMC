@@ -11,35 +11,38 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :description %><br>
-    <%= f.text_field :description ,:class=>"form-control"%>
-  </div>
-  <div class="field">
-    <%= f.label :service_id %><br>
-    <%= f.collection_check_boxes( :service_ids,Service.all,:id,:name,:class=>"form-control") %>
-  </div>
-  <div class="field">
-    <%= f.label :files %><br>
-    <%= f.text_field :files,:class=>"form-control" %>
-  </div>
-  <div class="field">
+
+
+  <div class="col-md-2">
     <%= f.label :client_id %><br>
     <%= f.text_field :client_id ,:class=>"form-control"%>
   </div>
-  <div class="field">
+  <div class="col-md-6">
     <%= f.label :h_trabalhadas %><br>
     <%= f.datetime_select :h_trabalhadas,:class=>"form-control" %>
   </div>
-  <div class="field">
+  <div class="col-md-3">
     <%= f.label :colaborador_id %><br>
     <%= f.text_field :colaborador_id ,:class=>"form-control"%>
   </div>
-  <div class="field">
+  <div class="col-md-3">
     <%= f.label :estado %><br>
     <%= f.text_field :estado ,:class=>"form-control"%>
   </div>
-  <div class="actions">
+
+    <div class="col-md-4">
+      <%= f.label :description %><br>
+      <%= f.text_area :description ,:class=>"form-control"%>
+    </div>
+    <div class="col-md-3">
+      <%= f.label :files %><br>
+      <%= f.text_field :files,:class=>"form-control" %>
+    </div>
+    <div class="col-md-12">
+      <%= f.label :service_id %><br>
+      <%= f.collection_check_boxes( :service_ids,Service.all,:id,:name,:class=>"form-control") %>
+    </div>
+  <div class="col-md-12">
     <%= f.submit 'Enviar', :class=>"btn btn-primary"%>
   </div>
 <% end %>

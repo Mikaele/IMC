@@ -1,13 +1,12 @@
-<h1>Listing services</h1>
+<h1>Listando Serviços</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Number</th>
-      <th>Category</th>
-      <th>Description</th>
-      <th>Ic</th>
+      <th>Nome</th>
+      <th>Tombo</th>
+      <th>Categoria</th>
+      <th>Descrição</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -19,9 +18,9 @@
         <td><%= service.number %></td>
         <td><%= service.category %></td>
         <td><%= service.description %></td>
-        <td><%= link_to 'Show', service %></td>
-        <td><%= link_to 'Edit', edit_service_path(service) %></td>
-        <td><%= link_to 'Destroy', service, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Exibir', service ,:class=>'btn btn-info'%></td>
+        <td><%= link_to 'Editar', edit_service_path(service),:class=>'btn btn-primary' %></td>
+        <td><%= link_to 'Deletar', service, method: :delete, data: { confirm: 'Está certo disso?',:class=>'btn btn-success' } %></td>
       </tr>
     <% end %>
   </tbody>
