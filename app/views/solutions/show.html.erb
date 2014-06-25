@@ -20,5 +20,11 @@
   <%= @solution.colaborador %>
 </p>
 
+<% files = Dir.glob("#{Rails.root}/public/solutions/#{@solution.id}/*")
+   files.each do |file|  %>
+    <% f=file.split('/')%>
+    <a href="/solutions/<%=@solution.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
+<% end %>
+
 <%= link_to 'Edit', edit_solution_path(@solution) %> |
 <%= link_to 'Back', solutions_path %>
