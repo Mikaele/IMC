@@ -1,4 +1,4 @@
-<%= form_for(@incidente) do |f| %>
+<%= form_for(@incidente,:multipart=>'true') do |f| %>
   <% if @incidente.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@incidente.errors.count, "error") %> prohibited this incidente from being saved:</h2>
@@ -17,7 +17,7 @@
   </div>
   <div class="col-md-4">
     <%= f.label :anexo %><br>
-    <%= f.text_field :anexo ,:class=>"form-control"%>
+    <%= f.file_field :anexo ,:class=>"form-control"%>
   </div>
   <div class="col-md-2">
     <%= f.label :colaborador_id %><br>

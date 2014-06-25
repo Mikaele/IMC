@@ -28,9 +28,7 @@ class SolutionsController < ApplicationController
 
     respond_to do |format|
       if @solution.save
-        if params[:anexo]
-        DataFile.save(solution_anexo,'solutions',@solution.id)
-        end
+        DataFile.save(solution_anexo,'solutions',@solution.id,'anexo')
         format.html { redirect_to @solution, notice: 'Solution was successfully created.' }
         format.json { render :show, status: :created, location: @solution }
       else
@@ -72,7 +70,7 @@ class SolutionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def solution_params
-      params.require(:solution).permit(:call_id, :comentario, :anexo, :colaborador_id)
+      params.require(:solution).permit(:call_id, :comentario, :colaborador_id)
     end
   def solution_anexo
       params.require(:solution).permit(:anexo)

@@ -28,9 +28,8 @@ class CallsController < ApplicationController
     @call = Call.new(call_params)
       respond_to do |format|
       if @call.save
-        if params[:files]
-        DataFile.save(call_file,'calls',@call.id)
-        end
+        DataFile.save(call_file,'calls',@call.id,'files')
+
         format.html { redirect_to @call, notice: 'Call was successfully created.' }
         format.json { render :show, status: :created, location: @call }
       else

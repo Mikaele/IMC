@@ -28,6 +28,7 @@ class IncidentesController < ApplicationController
 
     respond_to do |format|
       if @incidente.save
+        DataFile.save(incidente_anexo,'incidentes',@incidente.id,'anexo')
         format.html { redirect_to @incidente, notice: 'Incidente was successfully created.' }
         format.json { render :show, status: :created, location: @incidente }
       else
@@ -69,6 +70,9 @@ class IncidentesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def incidente_params
-      params.require(:incidente).permit(:call_id, :comentario, :anexo, :colaborador_id)
+      params.require(:incidente).permit(:call_id, :comentario, :colaborador_id)
+    end
+  def incidente_anexo
+      params.require(:incidente).permit(:anexo)
     end
 end
