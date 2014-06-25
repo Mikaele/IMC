@@ -20,7 +20,7 @@
   <%= @incidente.colaborador %>
 </p>
 
-<% files = Dir.glob("#{Rails.root}/public/incidentes/#{@call.id}/*")
+<% files = Dir.glob("#{Rails.root}/public/incidentes/#{@incidente.id}/*")
    files.each do |file|  %>
     <% f=file.split('/')%>
     <a href="/incidentes/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
