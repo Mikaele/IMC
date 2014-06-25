@@ -42,6 +42,17 @@
     </tr>
     <%end%>
   </table>
+<%
+
+
+   files = Dir.glob("#{Rails.root}/public/calls/#{@call.id}/*")
+   files.each do |file|  %>
+     <% f=file.split('/')%>
+    <a href="/calls/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
+   <% end
+
+
+%>
 
 
 </p>
