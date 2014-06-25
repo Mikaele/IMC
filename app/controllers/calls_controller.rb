@@ -26,9 +26,9 @@ class CallsController < ApplicationController
   # POST /calls.json
   def create
     @call = Call.new(call_params)
-
-    respond_to do |format|
+      respond_to do |format|
       if @call.save
+        DataFile.save(call_file,'calls',@call.id)
         format.html { redirect_to @call, notice: 'Call was successfully created.' }
         format.json { render :show, status: :created, location: @call }
       else
@@ -70,6 +70,9 @@ class CallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def call_params
-      params.require(:call).permit(:description, :service_id, :files, :client_id, :h_trabalhadas, :colaborador_id, :estado,:service_ids=>[])
+      params.require(:call).permit(:description,:service_id, :client_id, :h_trabalhadas, :colaborador_id, :estado,:service_ids=>[])
+    end
+  def call_file
+      params.require(:call).permit(:files)
     end
 end

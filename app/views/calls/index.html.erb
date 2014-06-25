@@ -4,7 +4,6 @@
   <thead>
     <tr>
       <th>Descrição</th>
-      <th>Serviço</th>
       <th>Arquivos</th>
       <th>Cliente</th>
       <th>H trabalhadas</th>
@@ -18,7 +17,6 @@
     <% @calls.each do |call| %>
       <tr>
         <td><%= call.description %></td>
-        <td><%= call.services[0].name %></td>
         <td><%= call.files %></td>
         <td><%= call.client %></td>
         <td><%= call.h_trabalhadas %></td>
