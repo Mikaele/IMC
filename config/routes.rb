@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get 'index',to: 'index#index'
 
   resources :perfils
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   resources :services
 
   resources :clients
+  resources :categories
+
 
   devise_for :users
 

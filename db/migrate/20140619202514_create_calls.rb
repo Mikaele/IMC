@@ -5,9 +5,10 @@ class CreateCalls < ActiveRecord::Migration
       t.references :service, index: true
       t.string :files
       t.references :client, index: true
-      t.timestamp :h_trabalhadas
+      t.time :h_trabalhadas
       t.references :colaborador, index: true
       t.string :estado
+      t.integer :escalonado
 
       t.timestamps
     end

@@ -7,90 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div role="navigation" class="navbar navbar-inverse navbar-fixed-top">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <a href="#" class="navbar-brand">IMC</a>
-      <% if current_user%>
-          <span class="text-success col-md-6">  <strong>Bem Vindo <%= current_user.nome%></strong></span>
-          <span class="text-success col-md-3"> Permissão: <strong><%= current_user.colaborador ? current_user.colaborador.perfil.nome.to_s : 'Cliente'%></strong></span>
-       <% end %>
-    </div>
-    <div class="navbar-collapse collapse">
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Serviços <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/services/new"><i class="fa-file-text"></i>Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/services"><i class="fa-list-alt"></i>Listar Serviços</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">IC <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/ics/new">Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/ics">Listar IC</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Chamados <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/calls/new">Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/calls">Listar Chamados</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Solução <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/solutions/new">Nova</a></li>
-            <li class="divider"></li>
-            <li><a href="/solutions">Listar Solução</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/perfils/new">Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/perfils">Listar Perfis</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="#">Horas dos Chamados</a></li>
-            <li><a href="#">Horas do Colaborador</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Serviços Frequentes</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Chamados por status</a></li>
-          </ul>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Incidentes <b class="caret"></b></a>
-          <ul class="dropdown-menu">
-            <li><a href="/incidentes/new">Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/incidentes">Listar</a></li>
-          </ul>
-        </li>
-        <li><a href="#">Ajuda</a></li>
-        <% if current_user %>
-        <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
-        <%end%>
-      </ul>
-    </div>
-  </div>
-</div>
+<% if current_user %>
+    <% if current_user.colaborador %>
+        <%= render 'layouts/menu_colaborador' %>
+    <% end %>
+<% end %>
 <br>
 <br>
 <div class="container theme-showcase">
   <p class="notice"><%= notice %></p>
   <p class="alert"><%= alert %></p>
-<%= yield %>
+  <%= yield %>
 </div>
 </body>
 </html>

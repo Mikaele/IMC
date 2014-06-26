@@ -77,7 +77,7 @@ class CallsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def call_params
-      params.require(:call).permit(:description,:service_id, :client_id, :h_trabalhadas, :colaborador_id, :estado,:service_ids=>[])
+      params.require(:call).permit(:description,:service_id, :client_id, :h_trabalhadas, :escalonado,:colaborador_id, :estado,:service_ids=>[])
     end
   def call_file
       params.require(:call).permit(:files)
