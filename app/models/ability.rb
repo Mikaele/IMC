@@ -14,6 +14,7 @@ class Ability
          can :manage,Colaborador
          can :manage,Client
          can :manage, Perfil
+         can [:manage],Incidente
          cannot :create, Client
          cannot :create, Call
 
