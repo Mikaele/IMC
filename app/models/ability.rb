@@ -13,8 +13,10 @@ class Ability
          can :manage,Service
          can :manage,Colaborador
          can :manage,Client
+         can :manage, Perfil
          cannot :create, Client
          cannot :create, Call
+
         elsif user.colaborador.perfil.nome=='Tec1'
          can :read, Call
          can :update, Call
