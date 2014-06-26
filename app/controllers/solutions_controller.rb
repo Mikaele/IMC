@@ -1,5 +1,7 @@
 class SolutionsController < ApplicationController
-  before_action :set_solution, only: [:show, :edit, :update, :destroy]
+ # before_action :set_solution, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource
 
   # GET /solutions
   # GET /solutions.json

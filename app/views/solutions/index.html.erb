@@ -1,11 +1,10 @@
 <h1>Listando soluções</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Call</th>
       <th>Comentario</th>
-      <th>Anexo</th>
       <th>Colaborador</th>
       <th colspan="3"></th>
     </tr>
@@ -16,11 +15,10 @@
       <tr>
         <td><%= solution.call %></td>
         <td><%= solution.comentario %></td>
-        <td><%= solution.anexo %></td>
         <td><%= solution.colaborador %></td>
-        <td><%= link_to 'Show', solution %></td>
-        <td><%= link_to 'Edit', edit_solution_path(solution) %></td>
-        <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', solution,:class=>'btn btn-info' %></td>
+        <td><%= link_to 'Edit', edit_solution_path(solution),:class=>'btn btn-primary' %>,</td>
+        <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn btn-danger'%></td>
       </tr>
     <% end %>
   </tbody>

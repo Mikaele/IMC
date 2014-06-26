@@ -1,5 +1,7 @@
 class CallsController < ApplicationController
-  before_action :set_call, only: [:show, :edit, :update, :destroy]
+  #before_action :set_call, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource
 
   # GET /calls
   # GET /calls.json
@@ -61,6 +63,10 @@ class CallsController < ApplicationController
       format.html { redirect_to calls_url }
       format.json { head :no_content }
     end
+  end
+
+  def chamado_horas
+    @calls=Call.all
   end
 
   private

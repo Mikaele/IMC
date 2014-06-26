@@ -3,13 +3,33 @@ class Ability
 
   def initialize(user)
     # Define abilities for the passed in user here. For example:
-    #   user ||= User.new # guest user (not logged in)
+    # user ||= User.new # guest user (not logged in)
+    puts "=================="+user.colaborador.to_param.to_s
      if user
-       if user.technic
-         can :read, Call
-         can :update, Call
+       if user.colaborador
+         if user.colaborador.perfil.nome=='Admin'
+         can :manage, Call
+         can :manage, Call
          can :manage, Ic
          can :manage,Service
+         can :manage,Colaborador
+         can :manage,Client
+         cannot :create, Client
+         cannot :create, Call
+        elsif user.colaborador.perfil.nome=='Tec1'
+         can :read, Call
+         can :update, Call
+         can [:index], Ic
+         can [:index],Service
+         can :index,Colaborador
+         can :index,Client
+         can [:create,:update,:index],Solution
+         can [:create,:update,:index],Incidente
+
+        elsif user.colaborador.perfil.nome=='Tec2'
+
+        elsif user.colaborador.perfil.nome=='Tec3'
+        end
        else
         can :create,Call
         can :read,Ic

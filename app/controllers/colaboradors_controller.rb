@@ -1,6 +1,6 @@
 class ColaboradorsController < ApplicationController
   #before_action :set_colaborador, only: [:show, :edit, :update, :destroy]
-
+ # load_and_authorize_resource
   # GET /colaboradors
   # GET /colaboradors.json
   def index

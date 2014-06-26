@@ -1,5 +1,7 @@
 class IncidentesController < ApplicationController
-  before_action :set_incidente, only: [:show, :edit, :update, :destroy]
+ # before_action :set_incidente, only: [:show, :edit, :update, :destroy]
+
+  load_and_authorize_resource
 
   # GET /incidentes
   # GET /incidentes.json

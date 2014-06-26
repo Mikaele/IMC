@@ -15,16 +15,17 @@
 
   <div class="col-md-2">
     <%= f.label :client_id %><br>
-    <%= f.text_field :client_id ,:class=>"form-control"%>
+    <%= f.hidden_field :client_id ,:value=>current_user.id%>
   </div>
   <div class="col-md-6">
-    <%= f.label :h_trabalhadas %><br>
+    <%= f.label :h_trabalhadas, "Data conclusão    -   Horas Trabalhadas" %><br>
     <%= f.datetime_select :h_trabalhadas,:class=>"form-control" %>
   </div>
+ <!--
   <div class="col-md-3">
-    <%= f.label :colaborador_id %><br>
-    <%= f.text_field :colaborador_id ,:class=>"form-control"%>
-  </div>
+    <%#= f.label :colaborador_id %><br>
+    <%#= f.select :colaborador_id ,Colaborador.all.collect {|p| [ p.name, p.id ] },:class=>"form-control"%>
+  </div>-->
   <div class="col-md-3">
     <%= f.label :estado %><br>
     <%= f.text_field :estado ,:class=>"form-control"%>
