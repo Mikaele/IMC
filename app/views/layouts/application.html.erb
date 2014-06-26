@@ -11,6 +11,10 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="#" class="navbar-brand">IMC</a>
+      <% if current_user%>
+          <span class="text-success col-md-6">  <strong>Bem Vindo <%= current_user.nome%></strong></span>
+          <span class="text-success col-md-3"> Permissão: <strong><%= current_user.colaborador ? current_user.colaborador.perfil.nome.to_s : 'Cliente'%></strong></span>
+       <% end %>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
