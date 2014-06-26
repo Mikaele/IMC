@@ -1,5 +1,5 @@
 class IcsController < ApplicationController
-#  before_action :set_ic, only: [:show, :edit, :update, :destroy]
+  before_action :set_ic, only: [:create]
  load_and_authorize_resource
 
   # GET /ics
@@ -65,9 +65,12 @@ class IcsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_ic
-      @ic = Ic.find(params[:id])
-    end
+  #  def set_ic
+  #    @ic = Ic.find(params[:id])
+ #   end
+  def set_ic
+    @ic = Ic.new(ic_params)
+  end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def ic_params

@@ -15,7 +15,7 @@ class Ability
          can :manage,Client
          can :manage, Perfil
          can :manage, Category
-         can [:manage],Incidente
+         can :manage,Incidente
          cannot :create, Client
          cannot :create, Call
 

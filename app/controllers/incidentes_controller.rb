@@ -1,5 +1,5 @@
 class IncidentesController < ApplicationController
- # before_action :set_incidente, only: [:show, :edit, :update, :destroy]
+ before_action :set_incidente, only: [:create]
 
   load_and_authorize_resource
 
@@ -67,7 +67,7 @@ class IncidentesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_incidente
-      @incidente = Incidente.find(params[:id])
+      @incidente = Incidente.new(incidente_params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

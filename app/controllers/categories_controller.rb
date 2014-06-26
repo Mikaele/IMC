@@ -1,5 +1,5 @@
 class CategoriesController < ApplicationController
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:create]
   load_and_authorize_resource
 
   # GET /categories
@@ -65,7 +65,7 @@ class CategoriesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_category
-      @category = Category.find(params[:id])
+      @category = Category.new(category_params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

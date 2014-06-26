@@ -1,5 +1,5 @@
 class ServicesController < ApplicationController
- # before_action :set_service, only: [:show, :edit, :update, :destroy]
+  before_action :set_service, only: [:create]
   load_and_authorize_resource
 
   # GET /services
@@ -66,7 +66,7 @@ class ServicesController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service
-      @service = Service.find(params[:id])
+      @service = Service.new(service_params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

@@ -1,5 +1,5 @@
 class SolutionsController < ApplicationController
- # before_action :set_solution, only: [:show, :edit, :update, :destroy]
+  before_action :set_solution, only: [:create]
 
   load_and_authorize_resource
 
@@ -67,7 +67,7 @@ class SolutionsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_solution
-      @solution = Solution.find(params[:id])
+      @solution = Solution.new(solution_params)
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

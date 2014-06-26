@@ -10,7 +10,10 @@
 <% if current_user %>
     <% if current_user.colaborador %>
         <%= render 'layouts/menu_colaborador' %>
-    <% end %>
+    <% elsif current_user.client%>
+        <%= render 'layouts/menu_cliente' %>
+
+<% end %>
 <% end %>
 <br>
 <br>

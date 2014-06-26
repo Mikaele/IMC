@@ -1,5 +1,5 @@
 class PerfilsController < ApplicationController
-  #before_action :set_perfil, only: [:show, :edit, :update, :destroy]
+  before_action :set_perfil, only: [:create]
 
   load_and_authorize_resource
 
@@ -66,7 +66,7 @@ class PerfilsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_perfil
-      @perfil = Perfil.find(params[:id])
+      @perfil = Perfil.new(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
