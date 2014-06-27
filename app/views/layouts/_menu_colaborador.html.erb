@@ -2,35 +2,45 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="#" class="navbar-brand">IMC</a>
-      <% if current_user%>
           <span class="text-success col-md-6">  <strong>Bem Vindo <%= current_user.nome%></strong></span>
           <span class="text-success col-md-6"> Permissão: <strong><%= current_user.colaborador ? current_user.colaborador.perfil.nome.to_s : 'Cliente'%></strong></span>
-      <% end %>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Serviços <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <% if can? :create,Service %>
             <li><a href="/services/new"><i class="fa-file-text"></i>Novo</a></li>
             <li class="divider"></li>
+             <% end %>
+            <% if can? :index,Service %>
             <li><a href="/services"><i class="fa-list-alt"></i>Listar Serviços</a></li>
+            <%end%>
           </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">IC <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/ics/new">Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/ics">Listar IC</a></li>
-          </ul>
+            <% if can? :create,Ic %>
+          <li><a href="/ics/new">Novo</a></li>
+                <li class="divider"></li>
+            <% end %>
+            <% if can? :index ,Ic%>
+                <li><a href="/ics">Listar IC</a></li>
+            <% end%>
+                    </ul>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Chamados <b class="caret"></b></a>
           <ul class="dropdown-menu">
-            <li><a href="/calls/new">Novo</a></li>
-            <li class="divider"></li>
-            <li><a href="/calls">Listar Chamados</a></li>
+            <% if can? :create, Call %>
+          <li><a href="/calls/new">Novo</a></li>
+                <li class="divider"></li>
+          <% end %>
+            <% if can? :index, Call %>
+          <li><a href="/calls">Listar Chamados</a></li>
+            <% end %>
           </ul>
         </li>
         <li class="dropdown">
@@ -41,15 +51,18 @@
             <li><a href="/solutions">Listar Solução</a></li>
           </ul>
         </li>
+        <% if can? :manage, Perfil%>
         <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Permissões <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="/perfils/new">Novo</a></li>
             <li class="divider"></li>
             <li><a href="/perfils">Listar Perfis</a></li>
           </ul>
         </li>
-        <li class="dropdown">
+       <%end%>
+        <% if current_user.colaborador.perfil.nome=='Tec3' || current_user.colaborador.perfil.nome=='Admin'%>
+      <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Relatórios <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li><a href="#">Horas dos Chamados</a></li>
@@ -60,12 +73,17 @@
             <li><a href="#">Chamados por status</a></li>
           </ul>
         </li>
+        <%end%>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">Incidentes <b class="caret"></b></a>
           <ul class="dropdown-menu">
+            <% if can? :create, Incidente%>
             <li><a href="/incidentes/new">Novo</a></li>
             <li class="divider"></li>
+            <%end%>
+            <% if can? :index, Incidente%>
             <li><a href="/incidentes">Listar</a></li>
+            <%end%>
           </ul>
         </li>
         <li class="dropdown">
