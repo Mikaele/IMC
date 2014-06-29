@@ -2,27 +2,33 @@
 
 <table>
   <thead>
-    <tr>
-      <th>User</th>
-      <th>Cpf</th>
-      <th>Telefone</th>
-      <th>Endereco</th>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>User</th>
+    <th>Cpf</th>
+    <th>Telefone</th>
+    <th>Endereco</th>
+    <th colspan="3"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @colaboradors.each do |colaborador| %>
+  <% @colaboradors.each do |colaborador| %>
       <tr>
         <td><%= colaborador.user %></td>
         <td><%= colaborador.cpf %></td>
         <td><%= colaborador.telefone %></td>
         <td><%= colaborador.endereco %></td>
-        <td><%= link_to 'Show', colaborador %></td>
-        <td><%= link_to 'Edit', edit_colaborador_path(colaborador) %></td>
-        <td><%= link_to 'Destroy', colaborador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% if can? :show, Colaborador%>
+            <td><%= link_to 'Show', colaborador %></td>
+        <%end%>
+        <% if can? :update, Colaborador%>
+            <td><%= link_to 'Edit', edit_colaborador_path(colaborador) %></td>
+        <%end%>
+        <% if can? :delete, Colaborador%>
+            <td><%= link_to 'Destroy', colaborador, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <%end%>
       </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
 
