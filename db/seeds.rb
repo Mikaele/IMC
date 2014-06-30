@@ -9,7 +9,7 @@ admin=User.create(:nome=>"Admin",:email=>'admin@mail.com',:password=>'123123123'
 tec1=User.create(:nome=>"Tecnico 1",:email=>'tec1@mail.com',:password=>'123123123')
 tec2=User.create(:nome=>"Tecnico 2",:email=>'tec2@mail.com',:password=>'123123123')
 tec3=User.create(:nome=>"Tecnico 3",:email=>'tec3@mail.com',:password=>'123123123')
-cli=User.create(:nome=>"Tecnico Joao",:email=>'cli@mail.com',:password=>'123123123')
+cli=User.create(:nome=>"Cliente Joao",:email=>'cli@mail.com',:password=>'123123123')
 
 p_admin=Perfil.create(:nome=>'Admin',:descricao=>"Administrado do Sistemas")
 p_tec3=Perfil.create(:nome=>'Tec3',:descricao=>"Ultimo Nivel tecnico")
