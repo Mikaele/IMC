@@ -25,8 +25,8 @@ class Ability
          can [:index,:read],Service
          can :read,Colaborador
          can :read,Client
-         can [:index],Solution
-         can [:index],Incidente
+         can [:index,:create,:show],Solution
+         can [:index,:create],Incidente
 
         elsif user.colaborador.perfil.nome=='Tec2'
           can :read, Call

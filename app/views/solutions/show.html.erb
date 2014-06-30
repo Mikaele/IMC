@@ -2,7 +2,7 @@
 
 <p>
   <strong>Call:</strong>
-  <%= @solution.call %>
+  <%= link_to '#'+@solution.call.id.to_s,@solution.call %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 
 <p>
   <strong>Colaborador:</strong>
-  <%= @solution.colaborador %>
+  <%= @solution.colaborador.user.nome %>
 </p>
 
 <% files = Dir.glob("#{Rails.root}/public/solutions/#{@solution.id}/*")

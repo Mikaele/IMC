@@ -77,7 +77,7 @@ class CallsController < ApplicationController
     @call=Call.find_by(:id=>params[:id])
     @resolver=ColaboradorsCalls.new(:colaborador_id=>current_user.id,:call_id=>params[:id])
     @resolver.save
-    render :index
+    render :show
   end
 
   def escalonar

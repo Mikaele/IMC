@@ -13,16 +13,15 @@
 
   <div class="col-md-2">
     <%= f.label :call_id,'Chamado' %><br>
-    <%= f.text_field :call_id,:class=>"form-control" %>
-  </div>
+    <%= f.select :call_id ,ColaboradorsCalls.select('distinct(call_id)').where(:colaborador_id=>current_user.id).collect {|p| [ p.call_id, p.call_id ] },:class=>"form-control"%>
+
+
+        </div>
   <div class="col-md-4">
     <%= f.label :anexo %><br>
     <%= f.file_field :anexo,:class=>"form-control" %>
   </div>
-  <div class="col-md-2">
-    <%= f.label :colaborador_id %><br>
-    <%= f.text_field :colaborador_id,:class=>"form-control" %>
-  </div>
+    <%= f.hidden_field :colaborador_id, :value=>current_user.id %>
     <div class="col-md-6">
       <%= f.label :comentario %><br>
       <%= f.text_area :comentario,:class=>"form-control" %>
