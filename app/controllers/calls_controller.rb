@@ -65,8 +65,26 @@ class CallsController < ApplicationController
     end
   end
 
+  def meus_cahamados
+    @calls=Call.find_by(:client_id=>current_user.id)
+  end
+
   def chamado_horas
     @calls=Call.all
+  end
+
+  def resolver
+    @call=Call.find_by(:id=>params[:id])
+    @resolver=ColaboradorsCalls.new(:colaborador_id=>current_user.id,:call_id=>params[:id])
+    @resolver.save
+    render :index
+  end
+
+  def escalonar
+    @call=Call.find_by(:id=>params[:id])
+    @escalonar=@call.update_attributes(:estado=>'Pendente',:escalonado=>@call.escalonado+1)
+    render :show
+
   end
 
   private

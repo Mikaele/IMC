@@ -20,6 +20,10 @@ Rails.application.routes.draw do
 
   resources :clients
 
+  get "/resolver/:id", to: "calls#resolver"
+  get "/escalonar/:id", to: "calls#escalonar"
+  get "/meus_chamados", to: "calls#meus_cahamados"
+
   devise_for :users
 
   devise_scope :user do

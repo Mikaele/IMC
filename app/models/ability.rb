@@ -20,8 +20,7 @@ class Ability
          cannot :create, Call
 
         elsif user.colaborador.perfil.nome=='Tec1'
-         can :read, Call
-         can :update, Call
+         can [:read,:escalonar,:resolver], Call
          can [:index,:read], Ic
          can [:index,:read],Service
          can :read,Colaborador
@@ -51,10 +50,9 @@ class Ability
         end
        else
          if user.client
-        can :create,Call
+        can [:create,:meus_cahamados],Call
         can :read,Ic
         can :read,Service
-        can :create,Call
         cannot :index,Call
         end
        end

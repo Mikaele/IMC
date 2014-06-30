@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
-
+<%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+<%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
 <p>
   <strong>Description:</strong>
   <%= @call.description %>
@@ -27,6 +28,10 @@
 <p>
   <strong>Estado:</strong>
   <%= @call.estado %>
+</p>
+<p>
+  <strong>Escalonado:</strong>
+  <%= @call.escalonado %>
 </p>
 <p>
   <strong>Serviços Relacionados ao chamado #<%=@call.id%></strong>
