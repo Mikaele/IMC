@@ -19,11 +19,7 @@
     <%= f.label :number ,'Numero' %><br>
     <%= f.number_field :number,:class=>"form-control" %>
   </div>-->
-  <div class="col-md-4">
 
-    <%= f.label :category,'Categoria' %><br>
-    <%=f.select :category, Category.all.collect {|p| [ p.nome, p.id ] },:class=>"form-control" %>
-  </div>
     <div class="col-md-2">
       <%= f.label :tempo,'Tempo Manutenção' %><br>
       <%= f.time_select :tempo,:class=>"form-control" %>
