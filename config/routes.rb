@@ -26,6 +26,7 @@ Rails.application.routes.draw do
   get "/escalonar/:id", to: "calls#escalonar"
   get "/meus_chamados", to: "calls#meus_cahamados"
   get "/chamado_horas" , to: "calls#chamado_horas"
+  get "/chamado_horas_colaborador" , to: "calls#chamado_horas_colaborador"
 
   devise_for :users
 

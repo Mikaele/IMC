@@ -72,6 +72,10 @@ class CallsController < ApplicationController
   def chamado_horas
     @calls=Call.order('h_trabalhadas DESC').limit(10)
   end
+  def chamado_horas_colaborador
+    @calls=Call.all
+
+  end
 
   def resolver
     @call=Call.find_by(:id=>params[:id])
@@ -84,7 +88,7 @@ class CallsController < ApplicationController
   end
   def resolvida_enviar
     @call=Call.find_by(:id=>params[:id])
-    @call.update_attributes(:estado=>"Resolvida",:h_trabalhadas=>params[:h_trabalhadas]['h_trabalhadas(4i)']+':'+params[:h_trabalhadas]['h_trabalhadas(5i)'])
+    @call.update_attributes(:estado=>"Resolvida",:colaborador_id=>current_user.colaborador.id,:h_trabalhadas=>params[:h_trabalhadas]['h_trabalhadas(4i)']+':'+params[:h_trabalhadas]['h_trabalhadas(5i)'])
     redirect_to '/calls'
   end
 
