@@ -1,4 +1,18 @@
-<%= debug @calls%>
+<table class="table-bordered">
+  <tr>
+    <th>Perfil</th>
+    <th>Colaborador id</th>
+    <th>Horas</th>
+  </tr>
+  <% @calls.each do |c| %>
+      <tr>
+      <td><%=c.colaborador.perfil.nome%></td>
+      <td><%=c.colaborador.id%></td>
+      <td><%=c.h_trabalhadas.strftime("%Ih")%> </td>
+      </tr>
+<%end%>
+</table>
+
 <script src="http://code.highcharts.com/highcharts.js"></script>
 <script src="http://code.highcharts.com/modules/data.js"></script>
 <script src="http://code.highcharts.com/modules/drilldown.js"></script>
