@@ -19,7 +19,7 @@ class Ability
          cannot :create, Call
 
         elsif user.colaborador.perfil.nome=='Tec1'
-         can [:read,:escalonar,:resolver,:resolvida], Call
+         can [:read,:escalonar,:resolver,:resolvida,:resolvida_enviar], Call
          can [:index,:read], Ic
          can [:index,:read],Service
          can :read,Colaborador
@@ -28,8 +28,7 @@ class Ability
          can [:index,:create],Incidente
 
         elsif user.colaborador.perfil.nome=='Tec2'
-          can :read, Call
-          can :update, Call
+          can [:read,:escalonar,:resolver,:resolvida,:resolvida_enviar], Call
           can [:index], Ic
           can [:index],Service
           can :index,Colaborador

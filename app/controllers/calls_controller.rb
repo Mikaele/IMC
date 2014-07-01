@@ -81,8 +81,12 @@ class CallsController < ApplicationController
   end
   def resolvida
     @call=Call.find_by(:id=>params[:id])
-    @call.update_attribute(:estado,"Resolvida")
-    render :show
+  end
+  def resolvida_enviar
+    @call=Call.find_by(:id=>params[:id])
+    @call.update_attributes(:estado=>"Resolvida",:h_trabalhadas=>params[:h_trabalhadas]['h_trabalhadas(4i)']+':'+params[:h_trabalhadas]['h_trabalhadas(5i)'])
+    redirect_to '/calls'
+
   end
 
   def escalonar

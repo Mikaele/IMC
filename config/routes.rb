@@ -22,6 +22,7 @@ Rails.application.routes.draw do
 
   get "/resolver/:id", to: "calls#resolver"
   get "/resolvida/:id", to: "calls#resolvida"
+  post  "/resolvida_enviar", to: "calls#resolvida_enviar"
   get "/escalonar/:id", to: "calls#escalonar"
   get "/meus_chamados", to: "calls#meus_cahamados"
 

@@ -17,13 +17,16 @@
 </p>
 
 <p>
-  <strong>Client:</strong>
-  <%= @call.client %>
+<strong>Cliente</strong>
+  <ul>
+    <li>Nome: <%= link_to @call.client.user.nome,@call.client%></li>
+    <li>Ocupação: <%= @call.client.occupation%></li>
+  </ul>
 </p>
 
 <p>
-  <strong>H trabalhadas:</strong>
-  <%= @call.h_trabalhadas %>
+  <strong>Horas trabalhadas:</strong>
+  <%= @call.h_trabalhadas ? @call.h_trabalhadas.strftime(" %I:%M") : ''%>
 </p>
 
 <p>
