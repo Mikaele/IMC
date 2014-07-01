@@ -79,6 +79,11 @@ class CallsController < ApplicationController
     @resolver.save
     render :show
   end
+  def resolvida
+    @call=Call.find_by(:id=>params[:id])
+    @call.update_attribute(:estado,"Resolvida")
+    render :show
+  end
 
   def escalonar
     @call=Call.find_by(:id=>params[:id])

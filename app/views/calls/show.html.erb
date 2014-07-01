@@ -1,6 +1,12 @@
 <p id="notice"><%= notice %></p>
-<%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
-<%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
+<% if @call.estado !="Resolvida"%>
+<% if ColaboradorsCalls.where(:colaborador=>current_user.colaborador.id,:call_id=>@call.id).order("created_at ASC") %>
+    <%= link_to "Resolvida", "/resolvida/"+@call.id.to_s ,:class=>"btn btn-default"%>
+    <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+<%else%>
+    <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
+<%end%>
+<%end%>
 <p>
   <strong>Description:</strong>
   <%= @call.description %>
@@ -22,7 +28,7 @@
 
 <p>
   <strong>Colaborador:</strong>
-  <%= @call.colaborador %>
+  <%=  @call.colaboradors %>
 </p>
 
 <p>

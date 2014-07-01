@@ -8,7 +8,6 @@ class Ability
        if user.colaborador
          if user.colaborador.perfil.nome=='Admin'
          can :manage, Call
-         can :manage, Call
          can :manage, Ic
          can :manage,Service
          can :manage,Colaborador
@@ -20,7 +19,7 @@ class Ability
          cannot :create, Call
 
         elsif user.colaborador.perfil.nome=='Tec1'
-         can [:read,:escalonar,:resolver], Call
+         can [:read,:escalonar,:resolver,:resolvida], Call
          can [:index,:read], Ic
          can [:index,:read],Service
          can :read,Colaborador
