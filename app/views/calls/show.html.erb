@@ -12,18 +12,16 @@
   <%= @call.description %>
 </p>
 <p>
-  <strong>Files:</strong>
-  <%= @call.files %>
+<strong>Cliente</strong>
+  <ul>
+    <li>Nome: <%= link_to @call.client.user.nome,@call.client%></li>
+    <li>Ocupação: <%= @call.client.occupation%></li>
+  </ul>
 </p>
 
 <p>
-  <strong>Client:</strong>
-  <%= @call.client %>
-</p>
-
-<p>
-  <strong>H trabalhadas:</strong>
-  <%= @call.h_trabalhadas %>
+  <strong>Horas trabalhadas:</strong>
+  <%= @call.h_trabalhadas ? @call.h_trabalhadas.strftime(" %I:%M") : ''%>
 </p>
 
 <p>
@@ -53,16 +51,14 @@
     </tr>
     <%end%>
   </table>
+<p>
+<strong>Anexo:</strong>
+  </p>
 <% files = Dir.glob("#{Rails.root}/public/calls/#{@call.id}/*")
    files.each do |file|  %>
      <% f=file.split('/')%>
     <a href="/calls/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
    <% end %>
-
-
 </p>
 
-
-
-<%= link_to 'Edit', edit_call_path(@call) %> |
-<%= link_to 'Back', calls_path %>
+<%= link_to 'Voltar', calls_path %>

@@ -70,7 +70,11 @@ class CallsController < ApplicationController
   end
 
   def chamado_horas
+    @calls=Call.order('h_trabalhadas DESC').limit(10)
+  end
+  def chamado_horas_colaborador
     @calls=Call.all
+
   end
 
   def resolver
@@ -81,15 +85,17 @@ class CallsController < ApplicationController
   end
   def resolvida
     @call=Call.find_by(:id=>params[:id])
-    @call.update_attribute(:estado,"Resolvida")
-    render :show
+  end
+  def resolvida_enviar
+    @call=Call.find_by(:id=>params[:id])
+    @call.update_attributes(:estado=>"Resolvida",:colaborador_id=>current_user.colaborador.id,:h_trabalhadas=>params[:h_trabalhadas]['h_trabalhadas(4i)']+':'+params[:h_trabalhadas]['h_trabalhadas(5i)'])
+    redirect_to '/calls'
   end
 
   def escalonar
     @call=Call.find_by(:id=>params[:id])
     @escalonar=@call.update_attributes(:estado=>'Pendente',:escalonado=>@call.escalonado+1)
     render :show
-
   end
 
   private

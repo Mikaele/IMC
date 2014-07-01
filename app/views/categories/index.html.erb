@@ -29,5 +29,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Category', new_category_path %>
+<%if can? :create, Category%>
+<%= link_to 'Nova Categoria', new_category_path %>
+<% end %>

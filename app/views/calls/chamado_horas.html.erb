@@ -1,34 +1,72 @@
-<h1>Listing calls</h1>
-
-<table class="table">
-  <thead>
+<div class="col-md-3">
+<table class="table table-bordered">
+  <tr>
+    <th>Chamado</th>
+    <th>Tempo gasto</th>
+  </tr>
+<% @calls.each do |c| %>
     <tr>
-      <th>Descrição</th>
-      <th>Arquivos</th>
-      <th>Cliente</th>
-      <th>H trabalhadas</th>
-      <th>Colaborador</th>
-      <th>Estado</th>
-      <th colspan="3"></th>
+      <td><%= link_to '#'+c.id.to_s,c %></td>
+      <td><%= c.h_trabalhadas.strftime(" %I:%M") %></td>
     </tr>
-  </thead>
-
-  <tbody>
-    <% @calls.each do |call| %>
-      <tr>
-        <td><%= call.description %></td>
-        <td><%= call.files %></td>
-        <td><%= call.client %></td>
-        <td><%= call.h_trabalhadas %></td>
-        <td><%= call.colaborador %></td>
-        <td><%= call.estado %></td>
-        <td><%= link_to 'Show', call ,:class=>'btn btn-info'%></td>
-        <td><%= link_to 'Edit', edit_call_path(call) ,:class=>'btn btn-primary'%></td>
-        <td><%= link_to 'Destroy', call, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn btn-danger'%></td>
-      </tr>
-    <% end %>
-  </tbody>
+<% end %>
 </table>
-<br>
+</div>
+<div class="col-md-9" id="container"></div>
 
-<%= link_to 'New Call', new_call_path %>
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>pt>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Os 10 chamados mais demorados'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Tempo dos chamados (Horas)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Chamados: <b>{point.y:.1f} horas</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: <%=raw @calls.map{|k| ["#"+k.id.to_s ,k.h_trabalhadas.strftime(" %I:%M").to_f]}%>
+                ,
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+
+
+</script>
