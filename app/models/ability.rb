@@ -20,7 +20,7 @@ class Ability
          cannot :update, Call
 
         elsif user.colaborador.perfil.nome=='Tec1'
-         can [:read,:escalonar,:resolver,:resolvida,:resolvida_enviar], Call
+         can [:read,:escalonar,:resolver,:ja_resolvi,:resolvida_enviar,:abandonar], Call
          can [:index,:read], Ic
          can [:index,:read],Service
          can :read,Colaborador
@@ -29,7 +29,7 @@ class Ability
          can [:index,:create],Incidente
 
         elsif user.colaborador.perfil.nome=='Tec2'
-          can [:read,:escalonar,:resolver,:resolvida,:resolvida_enviar], Call
+          can [:read,:escalonar,:resolver,:ja_resolvi,:resolvida_enviar,:abandonar], Call
           can [:index], Ic
           can [:index],Service
           can :index,Colaborador

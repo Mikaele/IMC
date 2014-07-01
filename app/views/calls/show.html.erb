@@ -1,11 +1,23 @@
 <p id="notice"><%= notice %></p>
+
 <% if @call.estado !="Resolvida"%>
-<% if ColaboradorsCalls.where(:colaborador=>current_user.colaborador.id,:call_id=>@call.id).order("created_at ASC") %>
-    <%= link_to "Resolvida", "/resolvida/"+@call.id.to_s ,:class=>"btn btn-default"%>
-    <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
-<%else%>
-    <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
-<%end%>
+    <% if @call.colaborador_id==current_user.colaborador.id%>
+        <% if  @call.estado !="Abandonada" && @call.escalonado==nil%>
+            <%= link_to "Já Resolvi", "/ja_resolvi/"+@call.id.to_s ,:class=>"btn btn-default"%>
+            <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+            <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+        <% elsif @call.estado !="Abandonada" && @call.escalonado==1 && current_user.colaborador.perfil.nome=="Tec2" %>
+            <%= link_to "Já Resolvi", "/ja_resolvi/"+@call.id.to_s ,:class=>"btn btn-default"%>
+            <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+            <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+        <% elsif @call.estado !="Abandonada" && @call.escalonado==2 && current_user.colaborador.perfil.nome=="Tec3" %>
+            <%= link_to "Já Resolvi", "/ja_resolvi/"+@call.id.to_s ,:class=>"btn btn-default"%>
+            <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+            <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+        <% end %>
+    <%else%>
+        <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
+    <%end%>
 <%end%>
 <p>
   <strong>Description:</strong>
@@ -25,8 +37,12 @@
 </p>
 
 <p>
-  <strong>Colaborador:</strong>
-  <%=  @call.colaboradors %>
+  <strong>Colaborador Responsavel:</strong>
+  <ul>
+    <li>ID:<%= @call.colaborador.id %></li>
+    <li>Nome:<%= @call.colaborador.user.nome %></li>
+    <li>Nível:<%= @call.colaborador.perfil.nome%></li>
+  </ul>
 </p>
 
 <p>
