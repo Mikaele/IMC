@@ -2,8 +2,10 @@
   <div class="container-fluid">
     <div class="navbar-header">
       <a href="#" class="navbar-brand">IMC</a>
-          <span class="text-success col-md-6">  <strong>Bem Vindo <%= current_user.nome%></strong></span>
-          <span class="text-success col-md-6"> Permissão: <strong><%= current_user.colaborador ? current_user.colaborador.perfil.nome.to_s : 'Cliente'%></strong></span>
+          <div class = "row">
+          <div class="col-md-6" style="color:#ffffff">  <strong>Bem Vindo <%= current_user.nome%></strong></div>
+          <div class="col-md-8"> Permissão: <strong><%= current_user.colaborador ? current_user.colaborador.perfil.nome.to_s : 'Cliente'%></strong></div>
+          </div>
     </div>
     <div class="navbar-collapse collapse">
       <ul class="nav navbar-nav navbar-right">

@@ -1,6 +1,13 @@
 <h1>Editando Solução</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @solution %> |
-<%= link_to 'Back', solutions_path %>
+<hr>
+<div class = "container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="jumbotron">
+				<%= render 'form' %><br>				
+				<%= link_to 'Show', @solution %> |
+				<%= link_to 'Back', solutions_path %>
+			</div>
+		</div>
+	</div>
+</div>

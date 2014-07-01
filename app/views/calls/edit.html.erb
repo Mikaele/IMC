@@ -1,6 +1,13 @@
 <h1>Editando Chamados</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @call %> |
-<%= link_to 'Back', calls_path %>
+<hr>
+<div class = "container">
+	<div class="row">
+		<div class="col-md-6 col-md-offset-3">
+			<div class="jumbotron">
+				<%= render 'form' %><br>
+				<%= link_to 'Show', @call %> |
+				<%= link_to 'Back', calls_path %>
+			</div>
+		</div>
+	</div>
+</div>
