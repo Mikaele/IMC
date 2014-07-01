@@ -17,6 +17,7 @@ class Ability
          can :manage,Incidente
          cannot :create, Client
          cannot :create, Call
+         cannot :update, Call
 
         elsif user.colaborador.perfil.nome=='Tec1'
          can [:read,:escalonar,:resolver,:resolvida,:resolvida_enviar], Call
