@@ -11,7 +11,7 @@
     </div>
   <% end %>
 
-  <div class="col-md-4">
+  <div>
     <%= f.label :name,'Nome' %><br>
     <%= f.text_field :name,:class=>"form-control" %>
   </div>
@@ -19,20 +19,24 @@
     <%= f.label :number ,'Numero' %><br>
     <%= f.number_field :number,:class=>"form-control" %>
   </div>-->
+  <div>
 
-    <div class="col-md-2">
+    <%= f.label :category,'Categoria' %><br>
+    <%=f.select :category, Category.all.collect {|p| [ p.nome, p.id ] },:class=>"form-control" %>
+  </div>
+    <div>
       <%= f.label :tempo,'Tempo Manutenção' %><br>
       <%= f.time_select :tempo,:class=>"form-control" %>
     </div>
-  <div class="col-md-6">
+  <div>
     <%= f.label :description,'Descrição' %><br>
     <%= f.text_area :description,:class=>"form-control" %>
   </div>
-  <div class="col-md-12">
+  <div>
     <%= f.label :ic_ids,'Itens de configuração relacionados' %><br>
     <%= f.collection_check_boxes( :ic_ids,Ic.all,:id,:name,:class=>"form-control") %>
-  </div>
-  <div class="col-md-12">
+  </div><br/>
+  <div>
     <%= f.submit "Enviar", :class=>"btn btn-primary"%>
   </div>
 <% end %>

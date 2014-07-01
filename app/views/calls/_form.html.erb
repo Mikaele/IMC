@@ -25,19 +25,19 @@
   </div>-->
     <%= f.hidden_field :estado,:value=>'Novo' ,:class=>"form-control"%>
 
-    <div class="col-md-4">
+    <div>
       <%= f.label :description %><br>
       <%= f.text_area :description ,:class=>"form-control"%>
     </div>
-    <div class="col-md-3">
+    <div>
       <%= f.label :files %><br>
       <%= f.file_field :files,:class=>"form-control" %>
     </div>
-    <div class="col-md-12">
+    <div>
       <%= f.label :service_id %><br>
       <%= f.collection_check_boxes( :service_ids,Service.all,:id,:name,:class=>"form-control") %>
     </div>
-  <div class="col-md-12">
+  <div><br>
     <%= f.submit 'Enviar', :class=>"btn btn-primary"%>
   </div>
 <% end %>
