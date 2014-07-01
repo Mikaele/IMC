@@ -26,4 +26,6 @@
 
 <br>
 
-<%= link_to 'New Solution', new_solution_path %>
+<%if can? :create, Solution%>
+<%= link_to 'Nova Solução', new_solution_path %>
+<%end%>

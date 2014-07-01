@@ -86,14 +86,12 @@ class CallsController < ApplicationController
     @call=Call.find_by(:id=>params[:id])
     @call.update_attributes(:estado=>"Resolvida",:h_trabalhadas=>params[:h_trabalhadas]['h_trabalhadas(4i)']+':'+params[:h_trabalhadas]['h_trabalhadas(5i)'])
     redirect_to '/calls'
-
   end
 
   def escalonar
     @call=Call.find_by(:id=>params[:id])
     @escalonar=@call.update_attributes(:estado=>'Pendente',:escalonado=>@call.escalonado+1)
     render :show
-
   end
 
   private

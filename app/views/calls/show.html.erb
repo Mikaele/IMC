@@ -12,11 +12,6 @@
   <%= @call.description %>
 </p>
 <p>
-  <strong>Files:</strong>
-  <%= @call.files %>
-</p>
-
-<p>
 <strong>Cliente</strong>
   <ul>
     <li>Nome: <%= link_to @call.client.user.nome,@call.client%></li>
@@ -56,16 +51,14 @@
     </tr>
     <%end%>
   </table>
+<p>
+<strong>Anexo:</strong>
+  </p>
 <% files = Dir.glob("#{Rails.root}/public/calls/#{@call.id}/*")
    files.each do |file|  %>
      <% f=file.split('/')%>
     <a href="/calls/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
    <% end %>
-
-
 </p>
 
-
-
-<%= link_to 'Edit', edit_call_path(@call) %> |
-<%= link_to 'Back', calls_path %>
+<%= link_to 'Voltar', calls_path %>

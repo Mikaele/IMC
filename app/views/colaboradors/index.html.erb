@@ -33,5 +33,7 @@
 </table>
 
 <br>
+<%if can? :create, Colaborador%>
 
-<%= link_to 'New Colaborador', new_colaborador_path %>
+<%= link_to 'Novo Colaborador', new_colaborador_path %>
+<% end %>

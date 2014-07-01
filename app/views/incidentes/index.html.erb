@@ -27,5 +27,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Incidente', new_incidente_path %>
+<%if can? :create, Incidente%>
+<%= link_to 'Novo Incidente', new_incidente_path %>
+ <% end %>

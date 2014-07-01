@@ -36,6 +36,8 @@
   </tbody>
 </table>
 <br>
+<%if can? :create, Call%>
 
-<%= link_to 'New Call', new_call_path %>
+    <%= link_to 'Novo Chamado', new_call_path %>
+<% end %>
 

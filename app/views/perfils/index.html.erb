@@ -23,5 +23,6 @@
 </table>
 
 <br>
-
-<%= link_to 'New Perfil', new_perfil_path %>
+<%if can? :create, Perfil%>
+<%= link_to 'Novo Perfil', new_perfil_path %>
+<%end%>
