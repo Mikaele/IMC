@@ -11,23 +11,23 @@
     </div>
   <% end %>
 
-  <div class="col-md-2">
+  <div>
     <%= f.label :call_id ,'Chamado'%><br>
     <%= f.text_field :call_id,:class=>"form-control" %>
   </div>
-  <div class="col-md-4">
+  <div>
     <%= f.label :anexo %><br>
     <%= f.file_field :anexo ,:class=>"form-control"%>
   </div>
-  <div class="col-md-2">
+  <div>
     <%= f.label :colaborador_id %><br>
     <%= f.text_field :colaborador_id ,:class=>"form-control"%>
   </div>
-    <div class="col-md-6">
+    <div>
       <%= f.label :comentario %><br>
       <%= f.text_area :comentario ,:class=>"form-control"%>
     </div>
-  <div class="col-md-12">
+  <div><br/>
     <%= f.submit :class=>'btn btn-primary'%>
   </div>
 <% end %>
