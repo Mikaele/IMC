@@ -5,7 +5,6 @@ capybara-*.html
 /tmp
 /db/*.sqlite3
 /db/schema.rb
-config/database.yml
 /public/system
 /coverage/
 /spec/tmp
@@ -15,7 +14,8 @@ rerun.txt
 pickle-email-*.html
 config/initializers/secret_token.rb
 config/secrets.yml
-
+Gemfile.lock
+config/database.yml
 ## Environment normalisation:
 /.bundle
 /vendor/bundle
