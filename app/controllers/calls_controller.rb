@@ -70,7 +70,7 @@ class CallsController < ApplicationController
   end
 
   def chamado_horas
-    @calls=Call.all
+    @calls=Call.order('h_trabalhadas DESC').limit(10)
   end
 
   def resolver

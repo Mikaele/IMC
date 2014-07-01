@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   post  "/resolvida_enviar", to: "calls#resolvida_enviar"
   get "/escalonar/:id", to: "calls#escalonar"
   get "/meus_chamados", to: "calls#meus_cahamados"
+  get "/chamado_horas" , to: "calls#chamado_horas"
 
   devise_for :users
 
