@@ -37,7 +37,7 @@
       <%= f.label :service_id %><br>
       <%= f.collection_check_boxes( :service_ids,Service.all,:id,:name,:class=>"form-control") %>
     </div>
-  <div>
+  <div><br>
     <%= f.submit 'Enviar', :class=>"btn btn-primary"%>
   </div>
 <% end %>
