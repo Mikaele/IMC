@@ -11,22 +11,22 @@
     </div>
   <% end %>
 
-  <div class="col-md-2">
+  <div>
     <%= f.label :call_id,'Chamado' %><br>
     <%= f.select :call_id ,ColaboradorsCalls.select('distinct(call_id)').where(:colaborador_id=>current_user.id).collect {|p| [ p.call_id, p.call_id ] },:class=>"form-control"%>
 
 
         </div>
-  <div class="col-md-4">
+  <div>
     <%= f.label :anexo %><br>
     <%= f.file_field :anexo,:class=>"form-control" %>
   </div>
     <%= f.hidden_field :colaborador_id, :value=>current_user.id %>
-    <div class="col-md-6">
+    <div>
       <%= f.label :comentario %><br>
       <%= f.text_area :comentario,:class=>"form-control" %>
     </div>
-  <div class="col-md-12">
+  <div>
     <%= f.submit :class=>"btn btn-primary"%>
   </div>
 <% end %>
