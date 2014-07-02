@@ -1,0 +1,92 @@
+<div class="col-md-12">
+<form action="/frequencia_servico" method="post" class="container-fluid white-row">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <br>
+  <div class="col-md-4">Data Inicial:
+    <%= date_select"data1","" %>
+  </div>
+  <div class="col-md-4">
+    Data Final:
+    <%= date_select"data2","" %>
+  </div>
+  <br>
+  <button class="btn btn-primary col-md-2" type="submit">Buscar</button>
+  <div class="col-md-1"></div>
+</form>
+</div>
+<div class="col-md-3">
+  <table class="table table-bordered">
+    <tr>
+      <th>ID</th>
+      <th>Nome</th>
+      <th>Quantidade</th>
+    </tr>
+    <% @calls.each do |c| %>
+        <tr>
+          <td><%= link_to '#'+c.id.to_s, "/services/"+c.id.to_s%></td>
+          <td><%=c.name%> </td>
+          <td><%=c.qtde%> </td>
+
+        </tr>
+    <% end %>
+</table>
+  </div>
+
+<div class="col-md-9" id="container"></div>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/exporting.js"></script>pt>
+<script>
+    $(function () {
+        $('#container').highcharts({
+            chart: {
+                type: 'column'
+            },
+            title: {
+                text: 'Serviços com maior frequencia'
+            },
+            xAxis: {
+                type: 'category',
+                labels: {
+                    rotation: -45,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif'
+                    }
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Tempo dos chamados (Horas)'
+                }
+            },
+            legend: {
+                enabled: false
+            },
+            tooltip: {
+                pointFormat: 'Chamados: <b>{point.y:.1f} horas</b>',
+            },
+            series: [{
+                name: 'Population',
+                data: <%=raw @calls.map{|k| ["#"+k.name.to_s ,k.qtde.to_i]}%>
+                ,
+                dataLabels: {
+                    enabled: true,
+                    rotation: -90,
+                    color: '#FFFFFF',
+                    align: 'right',
+                    x: 4,
+                    y: 10,
+                    style: {
+                        fontSize: '13px',
+                        fontFamily: 'Verdana, sans-serif',
+                        textShadow: '0 0 3px black'
+                    }
+                }
+            }]
+        });
+    });
+
+
+</script>

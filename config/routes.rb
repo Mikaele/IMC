@@ -34,6 +34,8 @@ Rails.application.routes.draw do
   post "/chamado_horas_colaborador" , to: "calls#chamado_horas_colaborador"
   get "/chamado_estado" , to: "calls#chamado_estado"
   post "/chamado_estado" , to: "calls#chamado_estado"
+  get "/frequencia_servico" , to: "calls#frequencia_servico"
+  post "/frequencia_servico" , to: "calls#frequencia_servico"
 
   devise_for :users
 
