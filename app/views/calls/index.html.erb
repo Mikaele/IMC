@@ -15,8 +15,8 @@
   <% @calls.each do |call| %>
       <tr>
         <td><%= call.description %></td>
-        <td><%= link_to call.colaborador.id,call.colaborador %></td>
-        <td><%= call.services %></td>
+        <td><%= link_to call.colaborador ? call.colaborador.id : '-',call.colaborador %></td>
+        <td><%= call.services.map{ |k| k.name} %></td>
         <td><%= call.estado %></td>
         <%if can? :show , Call%>
             <td><%= link_to 'Show', call ,:class=>'btn btn-info'%></td>
