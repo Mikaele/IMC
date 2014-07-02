@@ -1,1 +1,150 @@
-<%= debug @calls%>
+<div class="col-md-3">
+<table class="table table-bordered">
+  <tr>
+    <th>Perfil</th>
+    <th>Colaborador id</th>
+    <th>Horas</th>
+  </tr>
+  <% @calls.each do |c| %>
+      <tr>
+      <td><%=c.colaborador.perfil.nome%></td>
+      <td><%=c.colaborador.id%></td>
+      <td><%=c.h_trabalhadas ? c.h_trabalhadas.strftime("%Ih") : '-'%> </td>
+      </tr>
+<%end%>
+</table>
+</div>
+
+<script src="http://code.highcharts.com/highcharts.js"></script>
+<script src="http://code.highcharts.com/modules/data.js"></script>
+<script src="http://code.highcharts.com/modules/drilldown.js"></script>
+
+<div id="container" class="col-md-12"></div>
+
+<!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
+<pre id="tsv" style="display:none">Browser Version	Total Market Share
+<% @calls.each do |c| %>
+<%=c.colaborador.perfil.nome%> <%=c.colaborador.id%>	<%=c.h_trabalhadas ? c.h_trabalhadas.strftime("%Ih") : '0h'%>
+  <%end%>
+  </pre>
+<script>
+    $(function () {
+
+        Highcharts.data({
+            csv: document.getElementById('tsv').innerHTML,
+            itemDelimiter: '\t',
+            parsed: function (columns) {
+
+                var brands = {},
+                        brandsData = [],
+                        versions = {},
+                        drilldownSeries = [];
+
+                // Parse percentage strings
+                columns[1] = $.map(columns[1], function (value) {
+                    if (value.indexOf('h') === value.length - 1) {
+                        value = parseFloat(value);
+                    }
+                    return value;
+                });
+
+                $.each(columns[0], function (i, name) {
+                    var brand,
+                            version;
+
+                    if (i > 0) {
+
+                        // Remove special edition notes
+                        name = name.split(' -')[0];
+
+                        // Split into brand and version
+                        version = name.match(/([0-9]+[\.0-9x]*)/);
+                        if (version) {
+                            version = version[0];
+                        }
+                        brand = name.replace(version, '');
+
+                        // Create the main data
+                        if (!brands[brand]) {
+                            brands[brand] = columns[1][i];
+                        } else {
+                            brands[brand] += columns[1][i];
+                        }
+
+                        // Create the version data
+                        if (version !== null) {
+                            if (!versions[brand]) {
+                                versions[brand] = [];
+                            }
+                            versions[brand].push(['#' + version, columns[1][i]]);
+                        }
+                    }
+
+                });
+
+                $.each(brands, function (name, y) {
+                    brandsData.push({
+                        name: name,
+                        y: y,
+                        drilldown: versions[name] ? name : null
+                    });
+                });
+                $.each(versions, function (key, value) {
+                    drilldownSeries.push({
+                        name: key,
+                        id: key,
+                        data: value
+                    });
+                });
+
+                // Create the chart
+                $('#container').highcharts({
+                    chart: {
+                        type: 'column'
+                    },
+                    title: {
+                        text: 'Horas por Perfil de Colaborador'
+                    },
+                    subtitle: {
+                        text: 'Clique nas colunas para mais detalhes'
+                    },
+                    xAxis: {
+                        type: 'category'
+                    },
+                    yAxis: {
+                        title: {
+                            text: 'Total de Horas(inteiras)'
+                        }
+                    },
+                    legend: {
+                        enabled: false
+                    },
+                    plotOptions: {
+                        series: {
+                            borderWidth: 0,
+                            dataLabels: {
+                                enabled: true,
+                                format: '{point.y:.1f}horas'
+                            }
+                        }
+                    },
+
+                    tooltip: {
+                        headerFormat: '<span style="font-size:11px">{series.name}</span><br>',
+                        pointFormat: '<span style="color:{point.color}">{point.name}</span>: <b>{point.y:.2f}horas</b> no total<br/>'
+                    },
+
+                    series: [{
+                        name: 'Perfil',
+                        colorByPoint: true,
+                        data: brandsData
+                    }],
+                    drilldown: {
+                        series: drilldownSeries
+                    }
+                })
+
+            }
+        });
+    });
+</script>
