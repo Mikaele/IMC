@@ -78,9 +78,9 @@ class CallsController < ApplicationController
   end
   def chamado_horas_colaborador
     if params[:data1]&& params[:data2]
-      @calls=Call.where(" updated_at  between ? and ?",params[:data1]["(1i)"]+"-"+params[:data1]["(2i)"]+"-"+params[:data1]["(3i)"],params[:data2]["(1i)"]+"-"+params[:data2]["(2i)"]+"-"+params[:data2]["(3i)"])
+      @calls=Call.where(:estado=>"Resolvida").where(" updated_at  between ? and ?",params[:data1]["(1i)"]+"-"+params[:data1]["(2i)"]+"-"+params[:data1]["(3i)"],params[:data2]["(1i)"]+"-"+params[:data2]["(2i)"]+"-"+params[:data2]["(3i)"])
     else
-    @calls=Call.all
+    @calls=Call.where(:estado=>"Resolvida")
       end
   end
 
