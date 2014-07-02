@@ -30,7 +30,7 @@
   </div>
   <div>
     <%= f.label :ic_ids,'Itens de configuração relacionados' %><br>
-    <%= f.collection_check_boxes( :ic_ids,Ic.all,:id,:name,:class=>"form-control") %>
+    <%= f.collection_check_boxes( :ic_ids,Ic.all,:id,:name,:class=>"form-control") %><br/>
   </div><br/>
   <div>
     <%= f.submit "Enviar", :class=>"btn btn-primary"%>
