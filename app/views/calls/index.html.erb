@@ -15,7 +15,7 @@
   <% @calls.each do |call| %>
       <tr>
         <td><%= call.description %></td>
-        <td><%= link_to call.colaborador ? call.colaborador.id : '-',call.colaborador %></td>
+        <td><%= link_to call.colaborador ? call.colaborador.user.nome : '-',call.colaborador %></td>
         <td><%= call.services.map{ |k| k.name} %></td>
         <td><%= call.estado %></td>
         <%if can? :show , Call%>
