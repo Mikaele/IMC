@@ -38,11 +38,15 @@
 
 <p>
   <strong>Colaborador Responsavel:</strong>
+<% if @call.colaborador %>
   <ul>
     <li>ID:<%= @call.colaborador.id %></li>
     <li>Nome:<%= @call.colaborador.user.nome %></li>
     <li>Nível:<%= @call.colaborador.perfil.nome%></li>
   </ul>
+<%else%>
+    -
+ <%end%>
 </p>
 
 <p>
