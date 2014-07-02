@@ -74,7 +74,10 @@ class CallsController < ApplicationController
   end
   def chamado_horas_colaborador
     @calls=Call.all
+  end
 
+  def chamado_estado
+    @calls=Call.select("count(estado) as qtde, estado")
   end
 
   def resolver

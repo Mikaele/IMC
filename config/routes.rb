@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get "/meus_chamados", to: "calls#meus_cahamados"
   get "/chamado_horas" , to: "calls#chamado_horas"
   get "/chamado_horas_colaborador" , to: "calls#chamado_horas_colaborador"
+  get "/chamado_estado" , to: "calls#chamado_estado"
 
   devise_for :users
 
