@@ -12,8 +12,20 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :user_id %><br>
-    <%= f.text_field :user_id %>
+    <%= label_tag :nome %><br>
+    <%= text_field_tag "user[nome]" %>
+  </div>
+    <div class="field">
+    <%= label_tag :email %><br>
+    <%= text_field_tag "user[email]" %>
+  </div>
+    <div class="field">
+    <%= label_tag :senha %><br>
+    <%= password_field_tag "user[password]" %>
+  </div>
+    <div class="field">
+    <%= label_tag :password_confirmation %><br>
+    <%= password_field_tag "user[password_confirmation]" %>
   </div>
   <div class="field">
     <%= f.label :cpf %><br>

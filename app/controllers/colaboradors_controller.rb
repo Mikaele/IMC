@@ -25,6 +25,8 @@ class ColaboradorsController < ApplicationController
   # POST /colaboradors
   # POST /colaboradors.json
   def create
+    @user=User.create(userr_params)
+    params[:colaborador][:user_id]=@user.id
     @colaborador = Colaborador.new(colaborador_params)
 
     respond_to do |format|
@@ -71,5 +73,8 @@ class ColaboradorsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def colaborador_params
       params.require(:colaborador).permit(:user_id, :cpf, :telefone, :endereco)
+    end
+  def userr_params
+      params.require(:user).permit(:nome,:email,:password,:password_confirmation )
     end
 end
