@@ -66,7 +66,7 @@ class CallsController < ApplicationController
   end
 
   def meus_cahamados
-    @calls=Call.find_by(:client_id=>current_user.id)
+    @calls=Call.where(:client_id=>current_user.client.id).order("id DESC")
   end
 
   def chamado_horas

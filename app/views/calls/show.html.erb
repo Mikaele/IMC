@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<%if !current_user.client%>
 <% if @call.estado !="Resolvida"%>
     <% if @call.colaborador_id==current_user.colaborador.id%>
         <% if  @call.estado !="Abandonada" && @call.escalonado==nil%>
@@ -18,6 +18,7 @@
     <%else%>
         <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
     <%end%>
+<%end%>
 <%end%>
 <p>
   <strong>Description:</strong>
@@ -61,12 +62,12 @@
   <strong>Serviços Relacionados ao chamado #<%=@call.id%></strong>
   <table class="table">
     <tr>
-      <th>ID</th>
+      <th>#ID</th>
       <th>Nome</th>
     </tr>
     <% @call.services.each do |s| %>
   <tr>
-    <td><%= s.id%></td>
+    <td><%= link_to "#"+s.id.to_s,s%></td>
     <td><%= s.name%></td>
     </tr>
     <%end%>

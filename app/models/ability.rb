@@ -20,7 +20,7 @@ class Ability
          cannot :update, Call
 
         elsif user.colaborador.perfil.nome=='Tec1'
-         can [:read,:escalonar,:resolver,:ja_resolvi,:resolvida_enviar,:abandonar], Call
+         can [:show,:escalonar,:resolver,:ja_resolvi,:resolvida_enviar,:abandonar], Call
          can [:index,:read], Ic
          can [:index,:read],Service
          can :read,Colaborador
@@ -29,7 +29,7 @@ class Ability
          can [:index,:create],Incidente
 
         elsif user.colaborador.perfil.nome=='Tec2'
-          can [:read,:escalonar,:resolver,:ja_resolvi,:resolvida_enviar,:abandonar], Call
+          can [:show,:escalonar,:resolver,:ja_resolvi,:resolvida_enviar,:abandonar], Call
           can [:index], Ic
           can [:index],Service
           can :index,Colaborador
@@ -38,7 +38,7 @@ class Ability
           can [:create,:update,:index],Incidente
 
         elsif user.colaborador.perfil.nome=='Tec3'
-          can :read, Call
+          can :show, Call
           can :update, Call
           can [:manage], Ic
           can [:manage],Service
@@ -49,7 +49,7 @@ class Ability
         end
        else
          if user.client
-        can [:create,:meus_cahamados],Call
+        can [:create,:meus_cahamados,:show],Call
         can :read,Ic
         can :read,Service
         cannot :index,Call
