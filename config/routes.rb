@@ -31,6 +31,7 @@ Rails.application.routes.draw do
   get "/chamado_horas" , to: "calls#chamado_horas"
   post "/chamado_horas" , to: "calls#chamado_horas"
   get "/chamado_horas_colaborador" , to: "calls#chamado_horas_colaborador"
+  post "/chamado_horas_colaborador" , to: "calls#chamado_horas_colaborador"
   get "/chamado_estado" , to: "calls#chamado_estado"
   post "/chamado_estado" , to: "calls#chamado_estado"
 

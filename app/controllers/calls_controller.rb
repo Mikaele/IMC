@@ -70,10 +70,18 @@ class CallsController < ApplicationController
   end
 
   def chamado_horas
-    @calls=Call.order('h_trabalhadas DESC').limit(10)
+    if params[:data1]&& params[:data2]
+      @calls=Call.order('h_trabalhadas DESC').limit(30).where(" updated_at  between ? and ?",params[:data1]["(1i)"]+"-"+params[:data1]["(2i)"]+"-"+params[:data1]["(3i)"],params[:data2]["(1i)"]+"-"+params[:data2]["(2i)"]+"-"+params[:data2]["(3i)"])
+    else
+      @calls=Call.order('h_trabalhadas DESC').limit(10)
+    end
   end
   def chamado_horas_colaborador
+    if params[:data1]&& params[:data2]
+      @calls=Call.where(" updated_at  between ? and ?",params[:data1]["(1i)"]+"-"+params[:data1]["(2i)"]+"-"+params[:data1]["(3i)"],params[:data2]["(1i)"]+"-"+params[:data2]["(2i)"]+"-"+params[:data2]["(3i)"])
+    else
     @calls=Call.all
+      end
   end
 
   def chamado_estado
