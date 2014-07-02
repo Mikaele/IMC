@@ -15,7 +15,7 @@
       <tr>
         <td><%= solution.call %></td>
         <td><%= solution.comentario %></td>
-        <td><%= solution.colaborador %></td>
+        <td><%= solution.colaborador.user.nome %></td>
         <td><%= link_to 'Show', solution,:class=>'btn btn-info' %></td>
         <td><%= link_to 'Edit', edit_solution_path(solution),:class=>'btn btn-primary' %>,</td>
         <td><%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } ,:class=>'btn btn-danger'%></td>
