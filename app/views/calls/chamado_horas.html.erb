@@ -7,7 +7,8 @@
 <% @calls.each do |c| %>
     <tr>
       <td><%= link_to '#'+c.id.to_s,c %></td>
-      <td><%= c.h_trabalhadas.strftime(" %I:%M") %></td>
+      <td><%=c.h_trabalhadas ? c.h_trabalhadas.strftime(" %I:%M") : '-'%> </td>
+
     </tr>
 <% end %>
 </table>
@@ -49,7 +50,7 @@
             },
             series: [{
                 name: 'Population',
-                data: <%=raw @calls.map{|k| ["#"+k.id.to_s ,k.h_trabalhadas.strftime(" %I:%M").to_f]}%>
+                data: <%=raw @calls.map{|k| ["#"+k.id.to_s ,k.h_trabalhadas ? k.h_trabalhadas.strftime("%I").to_i : 0.to_f]}%>
                 ,
                 dataLabels: {
                     enabled: true,

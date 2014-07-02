@@ -3,16 +3,33 @@
     <div class="col-md-6 col-md-offset-3">
       <div class="jumbotron">
       <p id="notice"><%= notice %></p>
+      <%if !current_user.client%>
       <% if @call.estado !="Resolvida"%>
-      <% if ColaboradorsCalls.where(:colaborador=>current_user.colaborador.id,:call_id=>@call.id).order("created_at ASC") %>
-          <%= link_to "Resolvida", "/resolvida/"+@call.id.to_s ,:class=>"btn btn-default"%>
-          <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
-      <%else%>
-          <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
+          <% if @call.colaborador_id==current_user.colaborador.id%>
+              <% if  @call.estado !="Abandonada" && @call.escalonado==nil%>
+                  <%= link_to "Já Resolvi", "/ja_resolvi/"+@call.id.to_s ,:class=>"btn btn-default"%>
+                  <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+                  <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+              <% elsif @call.estado !="Abandonada" && @call.escalonado==1 && current_user.colaborador.perfil.nome=="Tec2" %>
+                  <%= link_to "Já Resolvi", "/ja_resolvi/"+@call.id.to_s ,:class=>"btn btn-default"%>
+                  <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+                  <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+              <% elsif @call.estado !="Abandonada" && @call.escalonado==2 && current_user.colaborador.perfil.nome=="Tec3" %>
+                  <%= link_to "Já Resolvi", "/ja_resolvi/"+@call.id.to_s ,:class=>"btn btn-default"%>
+                  <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+                  <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+              <% end %>
+                  <%= link_to 'Add Incidente',"/incidentes/new/"+@call.id.to_s ,:class=>"btn btn-default" %>
+                  <%= link_to 'Add Solução',"/incidentes/new/"+@call.id.to_s ,:class=>"btn btn-default" %>
+              <%else%>
+              <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
+          <%end%>
       <%end%>
       <%end%>
+
       <h1>Chamado</h1>
       <hr>
+
       <p>
         <strong>Description:</strong>
         <%= @call.description %>
@@ -43,23 +60,38 @@
         <strong>Escalonado:</strong>
         <%= @call.escalonado %>
       </p>
+
+      <p>
+        <strong>Colaborador Responsavel:</strong>
+      <% if @call.colaborador %>
+        <ul>
+          <li>ID:<%= @call.colaborador.id %></li>
+          <li>Nome:<%= @call.colaborador.user.nome %></li>
+          <li>Nível:<%= @call.colaborador.perfil.nome%></li>
+        </ul>
+      <%else%>
+          -
+       <%end%>
+      </p>
+
       <p>
         <strong>Serviços Relacionados ao chamado #<%=@call.id%></strong>
         <table class="table">
           <tr>
-            <th>ID</th>
+            <th>#ID</th>
             <th>Nome</th>
           </tr>
           <% @call.services.each do |s| %>
         <tr>
-          <td><%= s.id%></td>
+          <td><%= link_to "#"+s.id.to_s,s%></td>
           <td><%= s.name%></td>
           </tr>
           <%end%>
         </table>
-      <p>
+      </p>
+
       <strong>Anexo:</strong>
-        </p>
+      <p>
       <% files = Dir.glob("#{Rails.root}/public/calls/#{@call.id}/*")
          files.each do |file|  %>
            <% f=file.split('/')%>

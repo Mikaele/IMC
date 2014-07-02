@@ -13,15 +13,14 @@
 
   <div>
     <%= f.label :call_id ,'Chamado'%><br>
-    <%= f.text_field :call_id,:class=>"form-control" %>
+    <%= f.select :call_id ,Call.all.collect {|p| [ p.id, p.id ] },:selected=>params[:id],:class=>"form-control"%>
   </div>
   <div>
     <%= f.label :anexo %><br>
     <%= f.file_field :anexo ,:class=>"form-control"%>
   </div>
   <div>
-    <%= f.label :colaborador_id %><br>
-    <%= f.text_field :colaborador_id ,:class=>"form-control"%>
+    <%= f.hidden_field :colaborador_id,:value=>current_user.colaborador.id ,:class=>"form-control"%>
   </div>
     <div>
       <%= f.label :comentario %><br>

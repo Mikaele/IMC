@@ -21,12 +21,16 @@ Rails.application.routes.draw do
   resources :clients
 
   get "/resolver/:id", to: "calls#resolver"
-  get "/resolvida/:id", to: "calls#resolvida"
+  get "/incidentes/new/:id", to: "incidentes#new"
+  get "/solutions/new/:id", to: "solutions#new"
+  get "/ja_resolvi/:id", to: "calls#ja_resolvi"
+  get "/abandonar/:id", to: "calls#abandonar"
   post  "/resolvida_enviar", to: "calls#resolvida_enviar"
   get "/escalonar/:id", to: "calls#escalonar"
   get "/meus_chamados", to: "calls#meus_cahamados"
   get "/chamado_horas" , to: "calls#chamado_horas"
   get "/chamado_horas_colaborador" , to: "calls#chamado_horas_colaborador"
+  get "/chamado_estado" , to: "calls#chamado_estado"
 
   devise_for :users
 

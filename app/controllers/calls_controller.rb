@@ -66,7 +66,7 @@ class CallsController < ApplicationController
   end
 
   def meus_cahamados
-    @calls=Call.find_by(:client_id=>current_user.id)
+    @calls=Call.where(:client_id=>current_user.client.id).order("id DESC")
   end
 
   def chamado_horas
@@ -74,16 +74,20 @@ class CallsController < ApplicationController
   end
   def chamado_horas_colaborador
     @calls=Call.all
+  end
 
+  def chamado_estado
+    @calls=Call.select("count(estado) as qtde, estado")
   end
 
   def resolver
     @call=Call.find_by(:id=>params[:id])
     @resolver=ColaboradorsCalls.new(:colaborador_id=>current_user.id,:call_id=>params[:id])
+    @call.update_attributes(:colaborador_id=>current_user.colaborador.id,:estado=>"Atribuida")
     @resolver.save
     render :show
   end
-  def resolvida
+  def ja_resolvi
     @call=Call.find_by(:id=>params[:id])
   end
   def resolvida_enviar
@@ -94,7 +98,16 @@ class CallsController < ApplicationController
 
   def escalonar
     @call=Call.find_by(:id=>params[:id])
-    @escalonar=@call.update_attributes(:estado=>'Pendente',:escalonado=>@call.escalonado+1)
+    if current_user.colaborador.perfil.nome=='Tec1'
+      @escalonar=@call.update_attributes(:estado=>'Pendente',:escalonado=>1)
+    elsif current_user.colaborador.perfil.nome=='Tec2'
+      @escalonar=@call.update_attributes(:estado=>'Pendente',:escalonado=>2)
+    end
+    render :show
+  end
+  def abandonar
+    @call=Call.find_by(:id=>params[:id])
+    @call.update_attributes(:estado=>'Abandonada')
     render :show
   end
 

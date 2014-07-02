@@ -14,10 +14,10 @@
   <tbody>
     <% @incidentes.each do |incidente| %>
       <tr>
-        <td><%= incidente.call %></td>
+        <td><%= link_to "#"+incidente.call.id.to_s,incidente.call %></td>
         <td><%= incidente.comentario %></td>
         <td><%= incidente.anexo %></td>
-        <td><%= incidente.colaborador %></td>
+        <td><%= incidente.colaborador.user.nome %></td>
         <td><%= link_to 'Show', incidente %></td>
         <td><%= link_to 'Edit', edit_incidente_path(incidente) %></td>
         <td><%= link_to 'Destroy', incidente, method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -4,7 +4,6 @@
   <thead>
   <tr>
     <th>Nome</th>
-    <th>Tombo</th>
     <th>Descrição</th>
     <th colspan="3"></th>
   </tr>
@@ -14,7 +13,6 @@
   <% @services.each do |service| %>
       <tr>
         <td><%= service.name %></td>
-        <td><%= service.number %></td>
         <td><%= service.description %></td>
         <% if can? :show , Service%>
             <td><%= link_to 'Exibir', service ,:class=>'btn btn-info'%></td>

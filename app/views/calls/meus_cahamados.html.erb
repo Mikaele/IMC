@@ -1,1 +1,8 @@
-<%= debug @calls%>
+<% @calls.each do |c|%>
+    <div>
+    <p><strong>ID:</strong><%= link_to "#"+c.id.to_s,c%></p>
+      <p><strong>Descrição:</strong><%= c.description%></p>
+      <p><strong>Data:</strong><%= c.created_at.strftime("%d/%m/%Y")%></p>
+    </div>
+    <br>
+<%end%>
