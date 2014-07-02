@@ -23,11 +23,12 @@
 
 <!-- Data from www.netmarketshare.com. Select Browsers => Desktop share by version. Download as tsv. -->
 <pre id="tsv" style="display:none">Browser Version	Total Market Share
- <% if @calls%>
-  <% @calls.each do |c| %>
+ <%= debug  @calls%>
+
+ <!-- <% @calls.each do |c| %>
 <%=c.colaborador.perfil.nome%> <%=c.colaborador.id%>	<%=c.h_trabalhadas ? c.h_trabalhadas.strftime("%Ih") : '0h'%>
-  <%end%>
-  <%end%>
+  <%end%>-->
+
   </pre>
 <script>
     $(function () {
