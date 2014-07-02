@@ -13,7 +13,7 @@
 
   <div>
     <%= f.label :call_id,'Chamado' %><br>
-    <%= f.select :call_id ,ColaboradorsCalls.select('distinct(call_id)').where(:colaborador_id=>current_user.id).collect {|p| [ p.call_id, p.call_id ] },:class=>"form-control"%>
+    <%= f.select :call_id ,ColaboradorsCalls.select('distinct(call_id)').where(:colaborador_id=>current_user.id).collect {|p| [ p.call_id, p.call_id ] },:selected=>params[:id],:class=>"form-control"%>
 
 
         </div>

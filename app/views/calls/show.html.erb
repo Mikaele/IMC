@@ -15,7 +15,9 @@
             <%= link_to 'Abandonar',"/abandonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
             <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
         <% end %>
-    <%else%>
+            <%= link_to 'Add Incidente',"/incidentes/new/"+@call.id.to_s ,:class=>"btn btn-default" %>
+            <%= link_to 'Add Solução',"/incidentes/new/"+@call.id.to_s ,:class=>"btn btn-default" %>
+        <%else%>
         <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
     <%end%>
 <%end%>

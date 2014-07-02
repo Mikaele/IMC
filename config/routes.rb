@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :clients
 
   get "/resolver/:id", to: "calls#resolver"
+  get "/incidentes/new/:id", to: "incidentes#new"
+  get "/solutions/new/:id", to: "solutions#new"
   get "/ja_resolvi/:id", to: "calls#ja_resolvi"
   get "/abandonar/:id", to: "calls#abandonar"
   post  "/resolvida_enviar", to: "calls#resolvida_enviar"

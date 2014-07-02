@@ -10,6 +10,7 @@ class Ability
          can :manage, Call
          can :manage, Ic
          can :manage,Service
+         can :manage,Solution
          can :manage,Colaborador
          can :manage,Client
          can :manage, Perfil
