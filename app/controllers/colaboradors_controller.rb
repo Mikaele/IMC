@@ -10,6 +10,7 @@ class ColaboradorsController < ApplicationController
   # GET /colaboradors/1
   # GET /colaboradors/1.json
   def show
+    @colaborador = Colaborador.find_by(:id=>params[:id])
   end
 
   # GET /colaboradors/new
