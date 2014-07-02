@@ -1,42 +1,49 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="jumbotron">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @service.name %>
-</p>
+        <h1>
+          <%= @service.name %>
+        </h1>
+        <hr>
+        <p>
+          <strong>Number:</strong>
+          <%= @service.number %>
+        </p>
 
-<p>
-  <strong>Number:</strong>
-  <%= @service.number %>
-</p>
+        <p>
+          <strong>Description:</strong>
+          <%= @service.description %>
+        </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @service.description %>
-</p>
+        <p>
+          <strong>Ic:</strong>
+        </p>
+        <table class="table">
+          <tr></tr>
+          <th>Nome</th>
+          <th>Numero</th>
 
-<p>
-  <strong>Ic:</strong>
-</p>
-<table class="table">
-  <tr></tr>
-  <th>Nome</th>
-  <th>Numero</th>
+            <% @service.ics.each do |s|%>
+              <tr>
+            <td><%= s.number %></td>
+            <td><%= s.name %></td>
+              </tr>
+            <%  end%>
 
-    <% @service.ics.each do |s|%>
-      <tr>
-    <td><%= s.number %></td>
-    <td><%= s.name %></td>
-      </tr>
-    <%  end%>
+        </table>
 
-</table>
+        <% files = Dir.glob("#{Rails.root}/public/services/#{@service.id}/*")
+           files.each do |file|  %>
+            <% f=file.split('/')%>
+            <a href="/services/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
+        <% end %>
 
-<% files = Dir.glob("#{Rails.root}/public/services/#{@service.id}/*")
-   files.each do |file|  %>
-    <% f=file.split('/')%>
-    <a href="/services/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
-<% end %>
-
-<%= link_to 'Voltar', services_path %>
+        <%= link_to 'Voltar', services_path %>
+      </div>
+    </div>
+  </div>
+</div>
 

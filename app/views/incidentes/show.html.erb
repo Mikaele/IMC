@@ -1,29 +1,36 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="jumbotron">
+        <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Chamado:</strong>
-  <%= @incidente.call %>
-</p>
+        <h1>
+          <%= @incidente.call %>
+        </h1>
+        <hr>
+        <p>
+          <strong>Comentario:</strong>
+          <%= @incidente.comentario %>
+        </p>
 
-<p>
-  <strong>Comentario:</strong>
-  <%= @incidente.comentario %>
-</p>
+        <p>
+          <strong>Anexo:</strong>
+          <%= @incidente.anexo %>
+        </p>
 
-<p>
-  <strong>Anexo:</strong>
-  <%= @incidente.anexo %>
-</p>
+        <p>
+          <strong>Colaborador:</strong>
+          <%= @incidente.colaborador %>
+        </p>
 
-<p>
-  <strong>Colaborador:</strong>
-  <%= @incidente.colaborador %>
-</p>
+        <% files = Dir.glob("#{Rails.root}/public/incidentes/#{@incidente.id}/*")
+           files.each do |file|  %>
+            <% f=file.split('/')%>
+            <a href="/incidentes/<%=@incidente.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
+        <% end %>
 
-<% files = Dir.glob("#{Rails.root}/public/incidentes/#{@incidente.id}/*")
-   files.each do |file|  %>
-    <% f=file.split('/')%>
-    <a href="/incidentes/<%=@incidente.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
-<% end %>
-
-<%= link_to 'Voltar', incidentes_path %>
+        <%= link_to 'Voltar', incidentes_path %>
+      </div>
+    </div>
+  </div>
+</div>

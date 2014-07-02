@@ -1,13 +1,20 @@
 <p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+		<div class="jumbotron">
+		<h1>
+		  <%= @category.nome %>
+		</h1>
+		<hr>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @category.nome %>
-</p>
+		<p>
+		  <strong>Descricao:</strong>
+		  <%= @category.descricao %>
+		</p>
 
-<p>
-  <strong>Descricao:</strong>
-  <%= @category.descricao %>
-</p>
-
-<%= link_to 'Voltar', categories_path %>
+		<%= link_to 'Voltar', categories_path %>
+		</div>
+	</div>
+	</div>
+</div>

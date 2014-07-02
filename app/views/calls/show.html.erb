@@ -1,64 +1,74 @@
-<p id="notice"><%= notice %></p>
-<% if @call.estado !="Resolvida"%>
-<% if ColaboradorsCalls.where(:colaborador=>current_user.colaborador.id,:call_id=>@call.id).order("created_at ASC") %>
-    <%= link_to "Resolvida", "/resolvida/"+@call.id.to_s ,:class=>"btn btn-default"%>
-    <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
-<%else%>
-    <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
-<%end%>
-<%end%>
-<p>
-  <strong>Description:</strong>
-  <%= @call.description %>
-</p>
-<p>
-<strong>Cliente</strong>
-  <ul>
-    <li>Nome: <%= link_to @call.client.user.nome,@call.client%></li>
-    <li>Ocupação: <%= @call.client.occupation%></li>
-  </ul>
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+      <div class="jumbotron">
+      <p id="notice"><%= notice %></p>
+      <% if @call.estado !="Resolvida"%>
+      <% if ColaboradorsCalls.where(:colaborador=>current_user.colaborador.id,:call_id=>@call.id).order("created_at ASC") %>
+          <%= link_to "Resolvida", "/resolvida/"+@call.id.to_s ,:class=>"btn btn-default"%>
+          <%= link_to 'Escalonar',"/escalonar/"+@call.id.to_s ,:class=>"btn btn-default" %>
+      <%else%>
+          <%= link_to 'Resolver',"/resolver/"+@call.id.to_s ,:class=>"btn btn-default" %>
+      <%end%>
+      <%end%>
+      <h1>Chamado</h1>
+      <hr>
+      <p>
+        <strong>Description:</strong>
+        <%= @call.description %>
+      </p>
+      <p>
+      <strong>Cliente</strong>
+        <ul>
+          <li>Nome: <%= link_to @call.client.user.nome,@call.client%></li>
+          <li>Ocupação: <%= @call.client.occupation%></li>
+        </ul>
+      </p>
 
-<p>
-  <strong>Horas trabalhadas:</strong>
-  <%= @call.h_trabalhadas ? @call.h_trabalhadas.strftime(" %I:%M") : ''%>
-</p>
+      <p>
+        <strong>Horas trabalhadas:</strong>
+        <%= @call.h_trabalhadas ? @call.h_trabalhadas.strftime(" %I:%M") : ''%>
+      </p>
 
-<p>
-  <strong>Colaborador:</strong>
-  <%=  @call.colaboradors %>
-</p>
+      <p>
+        <strong>Colaborador:</strong>
+        <%=  @call.colaboradors %>
+      </p>
 
-<p>
-  <strong>Estado:</strong>
-  <%= @call.estado %>
-</p>
-<p>
-  <strong>Escalonado:</strong>
-  <%= @call.escalonado %>
-</p>
-<p>
-  <strong>Serviços Relacionados ao chamado #<%=@call.id%></strong>
-  <table class="table">
-    <tr>
-      <th>ID</th>
-      <th>Nome</th>
-    </tr>
-    <% @call.services.each do |s| %>
-  <tr>
-    <td><%= s.id%></td>
-    <td><%= s.name%></td>
-    </tr>
-    <%end%>
-  </table>
-<p>
-<strong>Anexo:</strong>
-  </p>
-<% files = Dir.glob("#{Rails.root}/public/calls/#{@call.id}/*")
-   files.each do |file|  %>
-     <% f=file.split('/')%>
-    <a href="/calls/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
-   <% end %>
-</p>
+      <p>
+        <strong>Estado:</strong>
+        <%= @call.estado %>
+      </p>
+      <p>
+        <strong>Escalonado:</strong>
+        <%= @call.escalonado %>
+      </p>
+      <p>
+        <strong>Serviços Relacionados ao chamado #<%=@call.id%></strong>
+        <table class="table">
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+          </tr>
+          <% @call.services.each do |s| %>
+        <tr>
+          <td><%= s.id%></td>
+          <td><%= s.name%></td>
+          </tr>
+          <%end%>
+        </table>
+      <p>
+      <strong>Anexo:</strong>
+        </p>
+      <% files = Dir.glob("#{Rails.root}/public/calls/#{@call.id}/*")
+         files.each do |file|  %>
+           <% f=file.split('/')%>
+          <a href="/calls/<%=@call.id%>/<%=f[-1] %>" target="_blank"><%=f[-1] %></a>
+         <% end %>
+      </p>
 
-<%= link_to 'Voltar', calls_path %>
+      <%= link_to 'Voltar', calls_path %>
+    </div>
+    </div>
+  </div>
+</div>

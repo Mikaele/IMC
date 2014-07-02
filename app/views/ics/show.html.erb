@@ -1,18 +1,25 @@
-<p id="notice"><%= notice %></p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3">
+    	<div class="jumbotron">
+			<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @ic.name %>
-</p>
+			<h1>
+			  <%= @ic.name %>
+			</h1>
 
-<p>
-  <strong>Number:</strong>
-  <%= @ic.number %>
-</p>
+			<p>
+			  <strong>Number:</strong>
+			  <%= @ic.number %>
+			</p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @ic.description %>
-</p>
+			<p>
+			  <strong>Description:</strong>
+			  <%= @ic.description %>
+			</p>
 
-<%= link_to 'Voltar', ics_path %>
+			<%= link_to 'Voltar', ics_path %>
+		</div>
+	</div>
+</div>
+</div>
