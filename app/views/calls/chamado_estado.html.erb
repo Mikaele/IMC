@@ -1,3 +1,18 @@
+<form action="/chamado_estado" method="post" class="container-fluid white-row">
+  <%= tag(:input, :type => "hidden", :name => request_forgery_protection_token.to_s, :value => form_authenticity_token) %>
+  <br>
+  <div class="col-md-4">Data Inicial:
+  <%= date_select"data1","" %>
+   </div>
+  <div class="col-md-4">
+  Data Final:
+  <%= date_select"data2","" %>
+    </div>
+    <br>
+    <button class="btn btn-primary col-md-2" type="submit">Buscar</button>
+    <div class="col-md-1"></div>
+  </div>
+</form>
 <div class="col-md-3">
 <table class="table table-bordered">
   <tr>

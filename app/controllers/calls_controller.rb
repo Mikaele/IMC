@@ -77,7 +77,11 @@ class CallsController < ApplicationController
   end
 
   def chamado_estado
-    @calls=Call.select("count(estado) as qtde, estado")
+    if params[:data1]&& params[:data2]
+    @calls=Call.select("count(estado) as qtde, estado").where(" updated_at  between ? and ?",params[:data1]["(1i)"]+"-"+params[:data1]["(2i)"]+"-"+params[:data1]["(3i)"],params[:data2]["(1i)"]+"-"+params[:data2]["(2i)"]+"-"+params[:data2]["(3i)"])
+    else
+      @calls=Call.select("count(estado) as qtde, estado")
+    end
   end
 
   def resolver
